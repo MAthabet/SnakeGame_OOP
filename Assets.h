@@ -1,8 +1,6 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 
-extern std::string const Spritesheet_Path;
-
 extern sf::Texture spritesheet;
 
 extern sf::Sprite head;

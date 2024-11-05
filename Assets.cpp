@@ -1,10 +1,6 @@
-#include "Assets.h"
-#include <string>
 
 #include "GameDefinitions.h"
-
-std::string const Spritesheet_Path = ".\\resources\\snake.png";
-
+#include "Assets.h"
 //defining rect for each assest type
 sf::IntRect headRect(4 * PIXIL_L, 3 * PIXIL_L, PIXIL_L, PIXIL_L);
 sf::IntRect headUpRect(1 * PIXIL_L, 3 * PIXIL_L, PIXIL_L, PIXIL_L);
