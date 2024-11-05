@@ -1,0 +1,5 @@
+﻿C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets(531,5): warning MSB8028: The intermediate directory (Debug\) contains files shared from another project (Project1.vcxproj).  This can lead to incorrect clean and rebuild behavior.
+  Map.cpp
+D:\ITI-GameDev\Project1\Project1\Map.cpp(73,68): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\ITI-GameDev\Project1\Project1\Map.cpp(73,37): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  Project1.vcxproj -> D:\ITI-GameDev\Project1\Debug\Snake Game.exe

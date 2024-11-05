@@ -1,0 +1,1 @@
+#include "StationaryObstacle.h"
