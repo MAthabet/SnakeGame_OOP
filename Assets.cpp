@@ -1,6 +1,8 @@
 #include "Assets.h"
 #include <string>
 
+#include "GameDefinitions.h"
+
 std::string const Spritesheet_Path = ".\\resources\\snake.png";
 
 //defining rect for each assest type

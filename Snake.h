@@ -2,19 +2,18 @@
 
 #include <SFML/Graphics.hpp>
 
+#include "GameDefinitions.h"
 #include "Assets.h"
-#include "Collision.h"
-
-int const SNAKE_INIT_SIZE = 3;
+#include "Collidable.h"
 
 enum class Direction { Up, Down, Left, Right };
 
-class Snake: public Collision
+class Snake: public Collidable
 {
 public:
+	bool golden;
 	Direction lastInput = Direction::Right;
 	std::vector<sf::Sprite> snake;
-	sf::Sprite collidedWith;
 	int health = SNAKE_INIT_SIZE;
 	int speed;
 	
@@ -27,11 +26,13 @@ public:
 	void increaseHealth(int toIncrease);
 	bool isAlive();
 	void setSpeed(int speed);
-
+	Collidable* checkCollision();
+	void onCollision();
+	void updatePosition();
 private:
+	void handleDeath();
 	void updateDirection();
-
-	
+	bool checkSelfCollision();
 	sf::Vector2i direction;
 	sf::Vector2f tailStartPosition;
 };

@@ -1,7 +1,6 @@
 #include "Map.h"
 #include "Assets.h"
 #include <fstream>
-
 void Map::draw(sf::RenderWindow* window)
 {
 	if (window)

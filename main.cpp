@@ -1,7 +1,6 @@
 #include <iostream>
 #include <vector>
 #include <SFML/Graphics.hpp>
-
 #include "Assets.h"
 #include "Snake.h"
 #include "Map.h"
@@ -12,7 +11,7 @@ int main()
     resizeAllAssets();
 
     // Create the main window
-    sf::RenderWindow window(sf::VideoMode(WIDTH_TILES_MAX * TILE_SIZE, HEIGHT_TILES_MAX * TILE_SIZE), "Snake Game Test");
+    sf::RenderWindow window(sf::VideoMode(WIDTH_TILES_MAX * TILE_SIZE, (HEIGHT_TILES_MAX+1) * TILE_SIZE), "Snake Game Test");
     window.setFramerateLimit(5);
     // Load the sprite sheet
     if (!spritesheet.loadFromFile(Spritesheet_Path)) {

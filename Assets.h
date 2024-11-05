@@ -1,33 +1,7 @@
 #pragma once
 #include <SFML/Graphics.hpp>
+
 extern std::string const Spritesheet_Path;
-
-int const PIXIL_L = 8;
-int const TILE_L = 3;
-int const TILE_SIZE = PIXIL_L * TILE_L;
-
-/*
-extern sf::IntRect headRect;
-extern sf::IntRect headUpRect;
-extern sf::IntRect headDownRect;
-extern sf::IntRect headLeftRect;
-extern sf::IntRect bodyRect;
-
-extern sf::IntRect wallUPRect;
-extern sf::IntRect wallLeftRect;
-extern sf::IntRect wallRightRect;
-extern sf::IntRect wallDownRect;
-
-extern sf::IntRect redObstacleRect;
-extern sf::IntRect blueObstacleRect;
-extern sf::IntRect rockRect;
-extern sf::IntRect shurikenRect;
- 
-extern sf::IntRect redAppleRect;
-extern sf::IntRect greenAppleRect;
-extern sf::IntRect goldenAppleRect;
-extern sf::IntRect cherryRect;
-*/
 
 extern sf::Texture spritesheet;
 

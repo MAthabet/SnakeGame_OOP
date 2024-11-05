@@ -1,8 +1,7 @@
 #include "Collectible.h"
 
-Collectible::Collectible(Collectables t, sf::Sprite* s, int h)
+Collectible::Collectible(sf::Sprite* s, int h)
 {
-    type = t;
     sprite = s;
     score = h;
 }

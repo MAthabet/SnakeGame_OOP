@@ -2,14 +2,12 @@
 
 #include <SFML/Graphics.hpp>
 
-#include "Effect.h"
-enum Collectables {RedApple, GreenApple, GoldenApple, Cherry};
+#include "Collidable.h"
 
-class Collectible: public Effect
+class Collectible: public Collidable
 {
 public:
-	Collectible(Collectables t, sf::Sprite* s,int h);
-	Collectables type;
+	Collectible(sf::Sprite* s,int h);
 	sf::Sprite* sprite;
 	int score;
 	void flip();

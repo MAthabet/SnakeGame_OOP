@@ -2,15 +2,12 @@
 
 #include <SFML/Graphics.hpp>
 
-#include "Effect.h"
+#include "Collidable.h"
 
-enum Obstacles { redObstacle, blueObstacle, rock, shuriken };
-
-class Obstacle: public Effect
+class Obstacle: public Collidable
 {
 public:
-	Obstacles type;
 	sf::Sprite sprite;
-
+	virtual void onCollision() = 0;
 };
 
