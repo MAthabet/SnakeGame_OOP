@@ -1,6 +1,7 @@
 #include "Map.h"
 #include "Assets.h"
 #include <fstream>
+
 void Map::draw(sf::RenderWindow* window)
 {
 	if (window)
@@ -10,7 +11,7 @@ void Map::draw(sf::RenderWindow* window)
 			for (int j = 0; j < WIDTH_TILES_MAX; j++)
 			{
 				if(map[i][j])
-				window->draw(*(map)[i][j]);
+				window->draw(*(map[i][j]->sprite));
 			}
 		}
 	}
@@ -38,6 +39,7 @@ void Map::fileToArray()
 		{
 			c = line[j];
 			sf::Sprite* temp = (new sf::Sprite());
+			Assets type = None;
 			switch (c)
 			{
 			case '\0':
@@ -46,31 +48,32 @@ void Map::fileToArray()
 			case 'w':
 			case 'W':
 				SpritetoWall(temp, i, j);
+				type = Wall;
 				break;
 			case 'r':
 			case 'R':
 				*temp = redObstacle;
+				type = RedObstacle;
 				break;
 			case 'b':
 			case 'B':
 				*temp = blueObstacle;
+				type = BlueObstacle;
 				break;
 			case 's':
 			case 'S':
 			{
 				setPlayerTailStart(i, j);
 				j += SNAKE_INIT_SIZE - 1;
-				temp = NULL;
 				break;
 			}
 			default:
-				temp = NULL;
 				break;
 			}
-			if (temp)
+			if (type != None)
 			{
 				temp->setPosition(j * TILE_SIZE + TILE_SIZE / 2, i * TILE_SIZE + TILE_SIZE / 2);
-				map[i][j] = temp;
+				map[i][j] = new Sprites(temp, type);
 			}
 		}
 	exit_loop:;

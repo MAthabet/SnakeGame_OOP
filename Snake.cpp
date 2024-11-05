@@ -30,7 +30,7 @@ void Snake::move()
     }
     sf::Sprite temp = snake[0];
     updateDirection();
-    snake[0].setPosition(temp.getPosition().x + direction.x * TILE_L * PIXIL_L, direction.y * TILE_L * PIXIL_L + temp.getPosition().y);
+    snake[0].setPosition(temp.getPosition().x + direction.x * TILE_SIZE, direction.y * TILE_SIZE + temp.getPosition().y);
     updatePosition();
 }
 
@@ -71,8 +71,8 @@ void Snake::increaseHealth(int toIncrease)
 
 bool Snake::isAlive()
 {
-    if (health > 0) return true;
-    return false;
+    if (health <= 0) Alive = false;
+    return Alive;
 }
 
 void Snake::setSpeed(int speed)
@@ -80,48 +80,60 @@ void Snake::setSpeed(int speed)
     this->speed = speed;
 }
 
-Collidable* Snake::checkCollision()
+void Snake::onCollision(Map* game)
 {
-    if (!checkCollisionWithWindow())
+    if (checkCollisionWithWindow())
     {
-
+        handleCollisionWithWindow();
     }
-    else if (!checkCollisionWithWall())
+    else if (checkCollisionWithWall(game))
     {
-
+        Alive = 0;
     }
-    else if (!checkCollisionWithCollidable())
+    else if (checkCollisionWithCollectable(game))
     {
-
+        ;
     }
-    else if (!checkSelfCollision())
+    else if (checkSelfCollision())
     {
-        return NULL;
+        health = 0;
     }
-    return NULL;
+    return ;
 }
 bool Snake::checkSelfCollision()
 {
-    for (int i = 0; i < health;i++)
+    int x = snake[0].getPosition().x;
+    int y = snake[0].getPosition().y;
+    for (int i = snake.size()-1; i > 0 ;i--)
     {
-        if (snake[0].getPosition().x == snake[i].getPosition().x)
-            if (snake[0].getPosition().y == snake[i].getPosition().y)
+        if (x == snake[i].getPosition().x)
+            if (y == snake[i].getPosition().y)
                 return true;
     }
     return false;
-}
-void Snake::onCollision()
-{
-    return;
 }
 void Snake::updatePosition()
 {
     this->position.x = snake[0].getPosition().x;
     this->position.y = snake[0].getPosition().y;
 }
+void Snake::handleCollisionWithWindow()
+{
+    int x = snake[0].getPosition().x;
+    int y = snake[0].getPosition().y;
+    if (x >= GAME_W_MAX)
+        snake[0].setPosition(0+ TILE_SIZE / 2,y);
+    else if (x <= 0)
+        snake[0].setPosition(GAME_W_MAX+TILE_SIZE/2, y);
+    else if (y <= 0)
+        snake[0].setPosition(x, GAME_H_MAX+ TILE_SIZE / 2);
+    else if (y >= GAME_H_MAX)
+        snake[0].setPosition(x, 0+ TILE_SIZE / 2);
+}
 //TODO
 void handleDeath()
 {
 
 }
+
 

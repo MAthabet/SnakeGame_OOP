@@ -11,8 +11,8 @@ int main()
     resizeAllAssets();
 
     // Create the main window
-    sf::RenderWindow window(sf::VideoMode(WIDTH_TILES_MAX * TILE_SIZE, (HEIGHT_TILES_MAX+1) * TILE_SIZE), "Snake Game Test");
-    window.setFramerateLimit(5);
+    sf::RenderWindow window(sf::VideoMode(GAME_W_MAX, GAME_H_MAX), "Snake Game Test");
+    window.setFramerateLimit(3);
     // Load the sprite sheet
     if (!spritesheet.loadFromFile(Spritesheet_Path)) {
         std::cerr << "Error loading sprite sheet!" << std::endl;
@@ -32,7 +32,6 @@ int main()
             if (event.type == sf::Event::Closed)
                 window.close();
         }
-
         // handle player input
         
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up) && playerSnake.lastInput != Direction::Down)
@@ -45,15 +44,20 @@ int main()
             playerSnake.lastInput = Direction::Left;
 
         playerSnake.move();
+        playerSnake.onCollision(&map);
         
         // Clear the screen
         window.clear();
         
         // Display everything on the window
+        
         map.draw(&window);
-        for (auto& spirit : playerSnake.snake)
+        if (playerSnake.isAlive())
         {
-            window.draw(spirit);
+            for (auto& spirit : playerSnake.snake)
+            {
+                window.draw(spirit);
+            }
         }
         window.display();
     }

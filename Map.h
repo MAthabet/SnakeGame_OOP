@@ -3,11 +3,22 @@
 #include <vector>
 #include "GameDefinitions.h"
 
+enum Assets
+{
+	None, Head, Body, Wall, RedObstacle, BlueObstacle, Rock, Shuriken, RedApple, GreenApple, GoldenApple, Cherry, Window
+};
+
+struct Sprites
+{
+	sf::Sprite* sprite;
+	Assets type;
+	Sprites(sf::Sprite* s, Assets t) : sprite(s), type(t) {}
+};
 
 class Map
 {
 public:
-	sf::Sprite* map[HEIGHT_TILES_MAX][WIDTH_TILES_MAX];
+	Sprites* map[HEIGHT_TILES_MAX][WIDTH_TILES_MAX];
 	sf::Vector2f PlayerTailStart;
 	std::vector<int[2]> headStartPos;
 	void draw(sf::RenderWindow* window);
@@ -15,7 +26,6 @@ public:
 	void fileToArray();
 private:
 	void SpritetoWall(sf::Sprite* temp, int i, int j);
-	sf::Vector2i playerTailStart(int i, int j);
 	void setPlayerTailStart(int i, int j);
 };
 

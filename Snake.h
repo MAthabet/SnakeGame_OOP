@@ -26,11 +26,13 @@ public:
 	void increaseHealth(int toIncrease);
 	bool isAlive();
 	void setSpeed(int speed);
-	Collidable* checkCollision();
-	void onCollision();
+	//Collidable* checkCollision();
+	void onCollision(Map* game);
 	void updatePosition();
 private:
+	bool Alive = true;
 	void handleDeath();
+	void handleCollisionWithWindow();
 	void updateDirection();
 	bool checkSelfCollision();
 	sf::Vector2i direction;
