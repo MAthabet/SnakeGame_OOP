@@ -1,20 +1,10 @@
 #include "Collectible.h"
 
-Collectible::Collectible(sf::Sprite* s, int h)
+
+Collectible::Collectible(sf::Sprite* sprite, Assets type)
 {
-    sprite = s;
-    score = h;
+    this->assest.sprite = sprite;
+    this->assest.type = type;
 }
 
-void Collectible::flip()
-{
-    sprite->setScale(
-        -1 * sprite->getScale().x,
-        sprite->getScale().y);
-}
-
-void Collectible::applyEffect()
-{
-
-}
 

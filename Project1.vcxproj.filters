@@ -27,9 +27,6 @@
     <ClCompile Include="Collectible.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Health.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Obstacles.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -57,16 +54,7 @@
     <ClCompile Include="Collidable.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="RedApple.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="GreenApple.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="GoldenApple.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Cherry.cpp">
+    <ClCompile Include="Generator.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -78,9 +66,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Collectible.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Health.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Obstacle.h">
@@ -110,19 +95,10 @@
     <ClInclude Include="Collidable.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="RedApple.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="GreenApple.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="GoldenApple.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Cherry.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="GameDefinitions.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Generator.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

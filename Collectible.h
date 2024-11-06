@@ -7,11 +7,6 @@
 class Collectible: public Collidable
 {
 public:
-	Collectible(sf::Sprite* s,int h);
-	sf::Sprite* sprite;
-	int score;
-	void flip();
-	void applyEffect();
-
+	Collectible(sf::Sprite* sprite , Assets type);
 };
 

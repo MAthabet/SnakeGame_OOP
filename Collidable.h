@@ -2,22 +2,23 @@
 #include <SFML/Graphics.hpp>
 #include "Map.h"
 
-
-
 class Collidable
 {
 public:
-	sf::Sprite sprite;
+	Assest assest;
 	sf::Vector2f position;
-	virtual void updatePosition() = 0;
-	virtual void onCollision(Map* map);
-	virtual Collidable* checkCollision();
-
+	virtual void updatePosition();
+	bool checkCollision();
+	Collidable();
+	Collidable(sf::Sprite* sprite, Assets type);
 protected:
+	Assest* colidedWith = NULL;
 	bool checkCollisionWithWindow();
-	bool checkCollisionWithWall(Map* world);
-	bool checkCollisionWithCollectable(Map* world);
-	bool checkCollisionWithMovingObstacle(Map* world);
-	bool checkCollisionWithStationryObstacle(Map* world);
+	virtual void handleCollisionWithWindow();
+	virtual void handleCollisionWithWall();
+	virtual void handleCollisionWithCollectable();
+	virtual void handleCollisionWithMovingObstacle();
+	virtual void handleCollisionWithStationryObstacle();
+	void DeleteTile(int i, int j);
 };
 

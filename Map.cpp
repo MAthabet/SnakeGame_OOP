@@ -1,6 +1,7 @@
 #include "Map.h"
-#include "Assets.h"
 #include <fstream>
+
+Assest* world[HEIGHT_TILES_MAX][WIDTH_TILES_MAX];
 
 void Map::draw(sf::RenderWindow* window)
 {
@@ -10,8 +11,9 @@ void Map::draw(sf::RenderWindow* window)
 		{
 			for (int j = 0; j < WIDTH_TILES_MAX; j++)
 			{
-				if(map[i][j])
-				window->draw(*(map[i][j]->sprite));
+				if(world[i][j])
+					if(world[i][j]->sprite)
+						window->draw(*(world[i][j]->sprite));
 			}
 		}
 	}
@@ -65,15 +67,17 @@ void Map::fileToArray()
 			{
 				setPlayerTailStart(i, j);
 				j += SNAKE_INIT_SIZE - 1;
+				delete temp;
 				break;
 			}
 			default:
+				delete temp;
 				break;
 			}
 			if (type != None)
 			{
 				temp->setPosition(j * TILE_SIZE + TILE_SIZE / 2, i * TILE_SIZE + TILE_SIZE / 2);
-				map[i][j] = new Sprites(temp, type);
+				world[i][j] = new Assest(temp, type);
 			}
 		}
 	exit_loop:;
@@ -85,7 +89,7 @@ void Map::deleteMap()
 	{
 		for (int j = 0; j < HEIGHT_TILES_MAX; j++)
 		{
-			delete &map[i][j];
+			delete &world[i][j];
 		}
 	}
 }
@@ -113,3 +117,4 @@ void Map::setPlayerTailStart(int i, int j)
 {
 	PlayerTailStart = {(float) j * TILE_SIZE + +TILE_SIZE / 2,(float) i * TILE_SIZE+ TILE_SIZE / 2 };
 }
+

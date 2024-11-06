@@ -1,24 +1,14 @@
 #pragma once
+#include "Assets.h"
 #include <SFML/Graphics.hpp>
 #include <vector>
 #include "GameDefinitions.h"
 
-enum Assets
-{
-	None, Head, Body, Wall, RedObstacle, BlueObstacle, Rock, Shuriken, RedApple, GreenApple, GoldenApple, Cherry, Window
-};
-
-struct Sprites
-{
-	sf::Sprite* sprite;
-	Assets type;
-	Sprites(sf::Sprite* s, Assets t) : sprite(s), type(t) {}
-};
+extern Assest* world[HEIGHT_TILES_MAX][WIDTH_TILES_MAX];
 
 class Map
 {
 public:
-	Sprites* map[HEIGHT_TILES_MAX][WIDTH_TILES_MAX];
 	sf::Vector2f PlayerTailStart;
 	std::vector<int[2]> headStartPos;
 	void draw(sf::RenderWindow* window);

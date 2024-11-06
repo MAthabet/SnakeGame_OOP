@@ -4,6 +4,5 @@
 
 class StationaryObstacle: public Obstacle
 {
-public:
 };
 

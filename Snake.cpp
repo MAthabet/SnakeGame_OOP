@@ -80,27 +80,7 @@ void Snake::setSpeed(int speed)
     this->speed = speed;
 }
 
-void Snake::onCollision(Map* game)
-{
-    if (checkCollisionWithWindow())
-    {
-        handleCollisionWithWindow();
-    }
-    else if (checkCollisionWithWall(game))
-    {
-        Alive = 0;
-    }
-    else if (checkCollisionWithCollectable(game))
-    {
-        ;
-    }
-    else if (checkSelfCollision())
-    {
-        health = 0;
-    }
-    return ;
-}
-bool Snake::checkSelfCollision()
+void Snake::checkSelfCollision()
 {
     int x = snake[0].getPosition().x;
     int y = snake[0].getPosition().y;
@@ -108,9 +88,8 @@ bool Snake::checkSelfCollision()
     {
         if (x == snake[i].getPosition().x)
             if (y == snake[i].getPosition().y)
-                return true;
+                handleDeath();
     }
-    return false;
 }
 void Snake::updatePosition()
 {
@@ -130,10 +109,82 @@ void Snake::handleCollisionWithWindow()
     else if (y >= GAME_H_MAX)
         snake[0].setPosition(x, 0+ TILE_SIZE / 2);
 }
-//TODO
-void handleDeath()
+void Snake::handleCollisionWithCollectable()
 {
+    switch (colidedWith->type)
+    {
+    case RedApple:
+    case GreenApple:
+        Score += colidedWith->type * 10;
+        health++;
+        grow();
+        break;
+    case GoldenApple:
+        shielded = true;
+        Score += GoldenApple * 10;
+        break;
+    case Cherry:
+        Score += Cherry * 10;
+        invertedInput = false;
+        break;
+    default:
+        break;
+    }
+    DeleteTile(colidedWith->sprite->getPosition().x / TILE_SIZE, colidedWith->sprite->getPosition().y / TILE_SIZE);
+}
+void Snake::handleCollisionWithMovingObstacle()
+{
+    if (!shielded)
+    {
+        switch (colidedWith->type)
+        {
+        case Rock:
+            handleDeath();
+            break;
+        case Shuriken:
+            health--;
+            break;
+        default:
+            break;
+        }
+        DeleteTile(colidedWith->sprite->getPosition().x / TILE_SIZE, colidedWith->sprite->getPosition().y / TILE_SIZE);
+    }
+    shielded = false;
+}
+void Snake::handleCollisionWithStationryObstacle()
+{
+    if(!shielded)
+    switch (colidedWith->type)
+    {
+    case Wall:
+        handleDeath();
+        break;
+    case RedObstacle:
+        invertedInput = true;
+        break;
+    case BlueObstacle:
+        health--;
+        break;
+    default:
+        break;
+    }
+    DeleteTile(colidedWith->sprite->getPosition().x / TILE_SIZE, colidedWith->sprite->getPosition().y / TILE_SIZE);
+}
+void Snake::handleCollisionWithWall()
+{
+    if (shielded)
+    {
+        shielded = false;
+        DeleteTile(colidedWith->sprite->getPosition().x / TILE_SIZE, colidedWith->sprite->getPosition().y / TILE_SIZE);
+        return;
+    }
+    handleDeath();
+}
 
+//TODO
+void Snake::handleDeath()
+{
+    Alive = false;
 }
 
 

@@ -1,6 +1,25 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 
+enum Assets
+{
+    None, RedApple, Head, GreenApple, Body, Wall, RedObstacle, BlueObstacle, Rock,
+    Shuriken, GoldenApple, Window, Cherry = 15
+};
+
+struct Assest
+{
+	sf::Sprite* sprite;
+	Assets type;
+	Assest() : sprite(NULL), type(None) {};
+	Assest(sf::Sprite* s, Assets t) : sprite(s), type(t){}
+	void flip(float speed);
+	void rotate(float speed);
+private:
+	bool inv = false;
+	void flipInv(float speed);
+};
+
 extern sf::Texture spritesheet;
 
 extern sf::Sprite head;

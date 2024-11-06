@@ -15,8 +15,9 @@ public:
 	Direction lastInput = Direction::Right;
 	std::vector<sf::Sprite> snake;
 	int health = SNAKE_INIT_SIZE;
-	int speed;
-	
+	int speed = 10;
+	bool shielded = true;
+	bool invertedInput = false;
 	Snake(int snakeLength) : Snake(snakeLength, tailStartPosition) {};
 	Snake(int snakeLength, sf::Vector2f start);
 
@@ -26,15 +27,18 @@ public:
 	void increaseHealth(int toIncrease);
 	bool isAlive();
 	void setSpeed(int speed);
-	//Collidable* checkCollision();
-	void onCollision(Map* game);
 	void updatePosition();
+	void checkSelfCollision();
+
 private:
 	bool Alive = true;
 	void handleDeath();
 	void handleCollisionWithWindow();
+	void handleCollisionWithCollectable();
+	void handleCollisionWithMovingObstacle();
+	void handleCollisionWithStationryObstacle();
+	void handleCollisionWithWall();
 	void updateDirection();
-	bool checkSelfCollision();
 	sf::Vector2i direction;
 	sf::Vector2f tailStartPosition;
 };

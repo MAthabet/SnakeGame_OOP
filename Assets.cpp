@@ -1,6 +1,9 @@
-
 #include "GameDefinitions.h"
 #include "Assets.h"
+
+
+
+#pragma region Rects
 //defining rect for each assest type
 sf::IntRect headRect(4 * PIXIL_L, 3 * PIXIL_L, PIXIL_L, PIXIL_L);
 sf::IntRect headUpRect(1 * PIXIL_L, 3 * PIXIL_L, PIXIL_L, PIXIL_L);
@@ -22,10 +25,11 @@ sf::IntRect shurikenRect(6 * PIXIL_L, 6 * PIXIL_L, PIXIL_L, PIXIL_L);
 sf::IntRect redAppleRect(6 * PIXIL_L, 0 * PIXIL_L, PIXIL_L, PIXIL_L);;
 sf::IntRect greenAppleRect(6 * PIXIL_L, 4 * PIXIL_L, PIXIL_L, PIXIL_L);
 sf::IntRect goldenAppleRect(6 * PIXIL_L, 1 * PIXIL_L, PIXIL_L, PIXIL_L);
-sf::IntRect cherryRect(6 * PIXIL_L, PIXIL_L, 3 * PIXIL_L, PIXIL_L);
-
+sf::IntRect cherryRect(6 * PIXIL_L, 3 * PIXIL_L, PIXIL_L, PIXIL_L);
+#pragma endregion
 sf::Texture spritesheet;
 
+#pragma region Sprites
 sf::Sprite head(spritesheet, headRect);
 sf::Sprite headUp(spritesheet, headUpRect);
 sf::Sprite headDown(spritesheet, headDownRect);
@@ -47,7 +51,38 @@ sf::Sprite redApple(spritesheet, redAppleRect);
 sf::Sprite greenApple(spritesheet, greenAppleRect);
 sf::Sprite goldenApple(spritesheet, goldenAppleRect);
 sf::Sprite cherry(spritesheet, cherryRect);
+#pragma endregion
 
+void Assest::flip(float speed)
+{
+    
+    float x = this->sprite->getScale().x;
+    if (speed == 1)
+    {
+        x *= -speed;
+        this->sprite->setScale(
+            x,
+            this->sprite->getScale().y);
+        return;
+    }
+    if (abs(x) < 0.24) inv = true;
+    else if(x > 0.95)inv = false;
+    if (inv)
+        flipInv(speed);
+    else
+    {
+        x *= speed;
+        this->sprite->setScale(
+            x,
+            this->sprite->getScale().y);
+        inv = true;
+    }
+}
+
+void Assest::rotate(float speed)
+{
+    this->sprite->rotate(speed);
+}
 
 void resizeAllAssets()
 {
@@ -67,6 +102,14 @@ void resizeAllAssets()
         sprite->setOrigin(w / 2, h / 2);
     }
 
+}
+
+void Assest::flipInv(float speed)
+{
+    float x = this->sprite->getScale().x/-speed;
+    this->sprite->setScale(
+        x,
+        this->sprite->getScale().y);
 }
 
 

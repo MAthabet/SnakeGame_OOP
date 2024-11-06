@@ -135,18 +135,14 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Assets.cpp" />
-    <ClCompile Include="Cherry.cpp" />
     <ClCompile Include="Collectible.cpp" />
     <ClCompile Include="Collidable.cpp" />
     <ClCompile Include="Game.cpp" />
-    <ClCompile Include="GoldenApple.cpp" />
-    <ClCompile Include="GreenApple.cpp" />
-    <ClCompile Include="Health.cpp" />
+    <ClCompile Include="Generator.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Map.cpp" />
     <ClCompile Include="MovingObstacle.cpp" />
     <ClCompile Include="Obstacles.cpp" />
-    <ClCompile Include="RedApple.cpp" />
     <ClCompile Include="Rock.cpp" />
     <ClCompile Include="Shuriken.cpp" />
     <ClCompile Include="Snake.cpp" />
@@ -155,18 +151,14 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Assets.h" />
-    <ClInclude Include="Cherry.h" />
     <ClInclude Include="Collectible.h" />
     <ClInclude Include="Collidable.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameDefinitions.h" />
-    <ClInclude Include="GoldenApple.h" />
-    <ClInclude Include="GreenApple.h" />
-    <ClInclude Include="Health.h" />
+    <ClInclude Include="Generator.h" />
     <ClInclude Include="Map.h" />
     <ClInclude Include="MovingObstacle.h" />
     <ClInclude Include="Obstacle.h" />
-    <ClInclude Include="RedApple.h" />
     <ClInclude Include="Rock.h" />
     <ClInclude Include="Shuriken.h" />
     <ClInclude Include="Snake.h" />

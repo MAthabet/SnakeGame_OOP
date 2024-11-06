@@ -6,8 +6,5 @@
 
 class Obstacle: public Collidable
 {
-public:
-	sf::Sprite sprite;
-	virtual void onCollision() = 0;
 };
 

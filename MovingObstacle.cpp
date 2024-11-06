@@ -1,5 +1,10 @@
 #include "MovingObstacle.h"
 
+MovingObstacle::MovingObstacle(sf::Sprite* sprite, Assets type)
+{
+
+}
+
 void MovingObstacle::setSpeed(float s)
 {
 	linSpeed = s;

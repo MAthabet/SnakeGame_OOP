@@ -1,4 +1,61 @@
 #include "Collidable.h"
+#include "Assets.h"
+
+Collidable::Collidable()
+{
+	this->assest.sprite = NULL;
+	this->assest.type = None;
+}
+Collidable::Collidable(sf::Sprite* sprite, Assets type)
+{
+	this->assest.sprite = sprite;
+	this->assest.type = type;
+}
+bool Collidable::checkCollision()
+{
+	bool isColided = false;
+	if (checkCollisionWithWindow())
+	{
+		handleCollisionWithWindow();
+		Assest* colidedWith = NULL;
+		return true;
+	}
+	int j = position.x / TILE_SIZE;
+	int i = position.y / TILE_SIZE;
+	Assets current;
+	if (world[i][j])
+	{
+		current = world[i][j]->type;
+		this->colidedWith = world[i][j];
+		switch (current)
+		{
+		case Wall:
+			handleCollisionWithWall();
+			isColided = true;
+			break;
+		case RedObstacle:
+		case BlueObstacle:
+			handleCollisionWithStationryObstacle();
+			isColided = true;
+			break;
+		case Rock:
+		case Shuriken:
+			handleCollisionWithMovingObstacle();
+			isColided = true;
+			break;
+		case RedApple:
+		case GreenApple:
+		case GoldenApple:
+		case Cherry:
+			handleCollisionWithCollectable();
+			isColided = true;
+			break;
+		default:
+			break;
+		}
+	}
+	return isColided;
+}
 bool Collidable::checkCollisionWithWindow()
 {
 	int x = position.x;
@@ -9,38 +66,39 @@ bool Collidable::checkCollisionWithWindow()
 		return true;
 	return false;
 }
-bool Collidable::checkCollisionWithWall(Map* world)
+void Collidable::handleCollisionWithWindow()
 {
-	int j = position.x/ TILE_SIZE;
-	int i = position.y/ TILE_SIZE;
-	if(world->map[i][j])
-	if (world->map[i][j]->type == Wall)
-	{
-		return true;
-	}
-	return false;
+	DeleteTile(position.x / TILE_SIZE, position.y / TILE_SIZE);
+	delete this;
+}
+void Collidable::handleCollisionWithWall()
+{
+	DeleteTile(this->position.x / TILE_SIZE, this->position.y / TILE_SIZE);
+	delete this;
 }
 
-bool Collidable::checkCollisionWithCollectable(Map* world)
+void Collidable::handleCollisionWithCollectable()
 {
-	return false;
+	DeleteTile(colidedWith->sprite->getPosition().x / TILE_SIZE, colidedWith->sprite->getPosition().y / TILE_SIZE);
 }
-bool Collidable::checkCollisionWithMovingObstacle(Map* world)
+void Collidable::handleCollisionWithMovingObstacle()
 {
-	return false;
+	DeleteTile(colidedWith->sprite->getPosition().x / TILE_SIZE, colidedWith->sprite->getPosition().y / TILE_SIZE);
 }
-bool Collidable::checkCollisionWithStationryObstacle(Map* world)
+void Collidable::handleCollisionWithStationryObstacle()
 {
-	return false;
-}
-void Collidable::onCollision(Map* game)
-{
-	if (checkCollision() == NULL) return;
-
-	game->map[(int)position.x][(int)position.y] = NULL;
+	DeleteTile(position.x / TILE_SIZE, position.y / TILE_SIZE);
+	delete this;
 }
 
-Collidable* Collidable::checkCollision()
+void Collidable::DeleteTile(int j, int i)
 {
-	return NULL;
+	world[i][j]->sprite = NULL;
+	world[i][j]->type = None;
+}
+
+void Collidable::updatePosition()
+{
+	this->position.x = assest.sprite->getPosition().x;
+	this->position.y = assest.sprite->getPosition().y;
 }
