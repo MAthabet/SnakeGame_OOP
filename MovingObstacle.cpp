@@ -2,7 +2,8 @@
 
 MovingObstacle::MovingObstacle(sf::Sprite* sprite, Assets type)
 {
-
+	this->assest.sprite = sprite;
+	this->assest.type = type;
 }
 
 void MovingObstacle::setSpeed(float s)

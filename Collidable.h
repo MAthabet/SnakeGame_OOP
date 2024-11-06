@@ -5,14 +5,16 @@
 class Collidable
 {
 public:
+	Map* map;
 	Assest assest;
 	sf::Vector2f position;
-	virtual void updatePosition();
-	bool checkCollision();
-	Collidable();
-	Collidable(sf::Sprite* sprite, Assets type);
-protected:
 	Assest* colidedWith = NULL;
+	virtual void updatePosition();
+	virtual bool checkCollision();
+	Collidable();
+	Collidable(sf::Sprite* sprite, Assets type, Map* map);
+
+protected:
 	bool checkCollisionWithWindow();
 	virtual void handleCollisionWithWindow();
 	virtual void handleCollisionWithWall();

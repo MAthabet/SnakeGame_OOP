@@ -2,6 +2,7 @@
 static int Score = 0;
 
 char const Spritesheet_Path[] = ".\\resources\\snake.png";
+char const Resources_map[] = ".\\resources\\input.txt";
 
 int const WIDTH_TILES_MAX = 40;
 int const HEIGHT_TILES_MAX = 24;

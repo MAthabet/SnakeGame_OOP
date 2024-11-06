@@ -55,7 +55,6 @@ sf::Sprite cherry(spritesheet, cherryRect);
 
 void Assest::flip(float speed)
 {
-    
     float x = this->sprite->getScale().x;
     if (speed == 1)
     {
@@ -65,6 +64,7 @@ void Assest::flip(float speed)
             this->sprite->getScale().y);
         return;
     }
+    
     if (abs(x) < 0.24) inv = true;
     else if(x > 0.95)inv = false;
     if (inv)

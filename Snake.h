@@ -15,12 +15,16 @@ public:
 	Direction lastInput = Direction::Right;
 	std::vector<sf::Sprite> snake;
 	int health = SNAKE_INIT_SIZE;
-	int speed = 10;
-	bool shielded = true;
+	bool shielded = false;
 	bool invertedInput = false;
-	Snake(int snakeLength) : Snake(snakeLength, tailStartPosition) {};
-	Snake(int snakeLength, sf::Vector2f start);
+	bool collidedWithWin = false;
+	bool haseEatenApple = true;
+	int collectedApples = 0;
 
+	Snake();
+
+	bool checkCollision();
+	void initSnake(int snakeLength, sf::Vector2f start, Map* map);
 	void grow();
 	void move();
 	void setStartPosition(sf::Vector2f startPosition);
@@ -32,6 +36,7 @@ public:
 
 private:
 	bool Alive = true;
+	int speed;
 	void handleDeath();
 	void handleCollisionWithWindow();
 	void handleCollisionWithCollectable();

@@ -13,7 +13,7 @@ struct Assest
 	Assets type;
 	Assest() : sprite(NULL), type(None) {};
 	Assest(sf::Sprite* s, Assets t) : sprite(s), type(t){}
-	void flip(float speed);
+	void flip(float speed = 1);
 	void rotate(float speed);
 private:
 	bool inv = false;

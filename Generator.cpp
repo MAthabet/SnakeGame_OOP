@@ -1,47 +1,30 @@
 #include "Generator.h"
 
-Collectible* AllCollectables[COLLECTIBLES_N];
-MovingObstacle* AllMovingObs[MOVING_OBSTACLES_N];
-bool static called = false;
-
-Generator::Generator(sf::Time interv)
+Generator::Generator(sf::Time interv, Map* world)
 {
 	coolDowmInterval = interv;
-	if (!called)
-	{
-		called = true;
-		updateAllCollectables();
-		updateAllMovingObs();
-	}
-}
-Generator::~Generator()
-{
-}
-void Generator::updateAllCollectables()
-{
-	AllCollectables[0] = new Collectible(&redApple, Assets::RedApple);
-	AllCollectables[1] = new Collectible(&greenApple, Assets::GreenApple);
-	AllCollectables[2] = new Collectible(&goldenApple, Assets::GoldenApple);
-	AllCollectables[3] = new Collectible(&cherry, Assets::Cherry);
-}
-void Generator::updateAllMovingObs()
-{
-	AllMovingObs[0] = new MovingObstacle(&rock, Assets::Rock);
-	AllMovingObs[1] = new MovingObstacle(&shuriken, Assets::Shuriken);
+	this->map = world;
 }
 
 Collidable* Generator::generate(Assets assest,int i, int j)
 {
 	if(clock.getElapsedTime() > coolDowmInterval)
 	{
+		if (hadGenerated)
+		{
+			DeleteTile(lastGeneratedIndex.first, lastGeneratedIndex.second);
+			hadGenerated = false;
+		}
 		Collidable* guard = findAssest(assest);
 		if (guard)
 		{
 			Assest temp = guard->assest;
 			temp.sprite->setPosition(j * TILE_SIZE + TILE_SIZE / 2, i * TILE_SIZE + TILE_SIZE / 2);
 			world[i][j] = new Assest(temp.sprite, temp.type);
+			lastGeneratedIndex = { i,j };
 			clock.restart();
-			generated = true;
+			tileNotFree(i, j);
+			hadGenerated = true;
 		}
 		return guard;
 	}
@@ -61,4 +44,45 @@ Collidable* Generator::findAssest(Assets assest)
 			return AllMovingObs[i];
 	}
 	return NULL;
+}
+
+std::pair<int, int> Generator::generateEmptyTile()
+{
+	int x = map->emptyTiles.size();
+	if (x<1) 
+	{
+		return { -1,-1 };
+	}
+	int indx = rand() % map->emptyTiles.size();
+
+	std::pair<int, int> genrated = map->emptyTiles[indx];
+
+	return genrated;
+}
+
+void Generator::tileNotFree(int indx)
+{
+	map->emptyTiles[indx] = map->emptyTiles.back();
+
+	map->emptyTiles.pop_back();
+}
+
+void Generator::tileNotFree(int i, int j)
+{
+	auto it = std::remove_if(map->emptyTiles.begin(), map->emptyTiles.end(),
+		[i, j](const std::pair<int, int>& p) {
+			return p.first == i && p.second == j;
+		});
+	if (it != map->emptyTiles.end())
+	{
+		map->emptyTiles.erase(it, map->emptyTiles.end());
+	}
+}
+void Generator::DeleteTile(int i, int j)
+{
+	if (world[i][j])
+	{
+		world[i][j] = NULL;
+	}
+	map->tileIsEmpty({ i,j });
 }

@@ -1,6 +1,7 @@
 ﻿C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets(531,5): warning MSB8028: The intermediate directory (Debug\) contains files shared from another project (Project1.vcxproj).  This can lead to incorrect clean and rebuild behavior.
-  main.cpp
+  Game.cpp
 D:\ITI-GameDev\Project1\Project1\MovingObstacle.h(17,27): warning C4305: 'initializing': truncation from 'double' to 'const float'
-  (compiling source file 'main.cpp')
+  (compiling source file 'Game.cpp')
   
+D:\ITI-GameDev\Project1\Project1\Game.cpp(140): warning C4715: 'Game::loadSpritesheet': not all control paths return a value
   Project1.vcxproj -> D:\ITI-GameDev\Project1\Debug\Snake Game.exe

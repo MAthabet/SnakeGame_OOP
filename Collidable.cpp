@@ -6,10 +6,11 @@ Collidable::Collidable()
 	this->assest.sprite = NULL;
 	this->assest.type = None;
 }
-Collidable::Collidable(sf::Sprite* sprite, Assets type)
+Collidable::Collidable(sf::Sprite* sprite, Assets type, Map* map)
 {
 	this->assest.sprite = sprite;
 	this->assest.type = type;
+	this->map = map;
 }
 bool Collidable::checkCollision()
 {
@@ -93,8 +94,8 @@ void Collidable::handleCollisionWithStationryObstacle()
 
 void Collidable::DeleteTile(int j, int i)
 {
-	world[i][j]->sprite = NULL;
-	world[i][j]->type = None;
+	world[i][j] = NULL;
+	map->tileIsEmpty({i,j});
 }
 
 void Collidable::updatePosition()

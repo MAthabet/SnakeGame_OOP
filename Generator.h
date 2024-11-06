@@ -11,15 +11,19 @@ extern MovingObstacle* AllMovingObs[MOVING_OBSTACLES_N];
 class Generator
 {
 public:
-	bool generated = false;
-	Generator(sf::Time interv);
-	~Generator();
+	Generator(sf::Time interv, Map* world);
 	Collidable* generate(Assets assest, int i, int j);
+	std::pair<int, int> generateEmptyTile();
+	bool hadGenerated = false;
 private:
-	void updateAllCollectables();
-	void updateAllMovingObs();
+	std::pair<int, int> lastGeneratedIndex;
+	Map* map;
 	sf::Clock clock;
 	sf::Time coolDowmInterval;
 	Collidable* findAssest(Assets assest);
+	void tileNotFree(int indx);
+	void tileNotFree(int i, int j);
+	void DeleteTile(int j, int i);
+
 };
 

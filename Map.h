@@ -10,12 +10,17 @@ class Map
 {
 public:
 	sf::Vector2f PlayerTailStart;
-	std::vector<int[2]> headStartPos;
+	std::vector<std::pair<int, int>> emptyTiles;
 	void draw(sf::RenderWindow* window);
 	void deleteMap();
-	void fileToArray();
+	void fileToArray(std::string s);
+	void tileIsEmpty(std::pair<int, int> position);
+
+	Map();
+
 private:
 	void SpritetoWall(sf::Sprite* temp, int i, int j);
 	void setPlayerTailStart(int i, int j);
+
 };
 

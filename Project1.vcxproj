@@ -156,6 +156,7 @@
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameDefinitions.h" />
     <ClInclude Include="Generator.h" />
+    <ClInclude Include="Includes.h" />
     <ClInclude Include="Map.h" />
     <ClInclude Include="MovingObstacle.h" />
     <ClInclude Include="Obstacle.h" />

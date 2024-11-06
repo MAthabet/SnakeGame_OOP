@@ -2,10 +2,15 @@
 
 #include <SFML/Graphics.hpp>
 
-Snake::Snake(int snakeLength, sf::Vector2f start)
+Snake::Snake()
+{
+
+}
+void Snake::initSnake(int snakeLength, sf::Vector2f start, Map* map)
 {
     tailStartPosition.x = start.x;
     tailStartPosition.y = start.y;
+    this->map = map;
     head.setPosition(tailStartPosition);
     snake.push_back(head);
     for (int i = 1; i < snakeLength; i++)
@@ -108,6 +113,7 @@ void Snake::handleCollisionWithWindow()
         snake[0].setPosition(x, GAME_H_MAX+ TILE_SIZE / 2);
     else if (y >= GAME_H_MAX)
         snake[0].setPosition(x, 0+ TILE_SIZE / 2);
+    collidedWithWin = true;
 }
 void Snake::handleCollisionWithCollectable()
 {
@@ -117,6 +123,9 @@ void Snake::handleCollisionWithCollectable()
     case GreenApple:
         Score += colidedWith->type * 10;
         health++;
+        collectedApples++;
+        haseEatenApple = true;
+        printf("%d ", collectedApples);
         grow();
         break;
     case GoldenApple:
@@ -149,7 +158,6 @@ void Snake::handleCollisionWithMovingObstacle()
         }
         DeleteTile(colidedWith->sprite->getPosition().x / TILE_SIZE, colidedWith->sprite->getPosition().y / TILE_SIZE);
     }
-    shielded = false;
 }
 void Snake::handleCollisionWithStationryObstacle()
 {
@@ -168,6 +176,7 @@ void Snake::handleCollisionWithStationryObstacle()
     default:
         break;
     }
+    shielded = false;
     DeleteTile(colidedWith->sprite->getPosition().x / TILE_SIZE, colidedWith->sprite->getPosition().y / TILE_SIZE);
 }
 void Snake::handleCollisionWithWall()
@@ -180,7 +189,65 @@ void Snake::handleCollisionWithWall()
     }
     handleDeath();
 }
+bool Snake::checkCollision()
+{
+    bool isColided = false;
+    int j = position.x / TILE_SIZE;
+    int i = position.y / TILE_SIZE;
 
+    //jumping over wall bug
+    if (collidedWithWin)
+    {
+        collidedWithWin = false;
+        if (j >= WIDTH_TILES_MAX) j = 0;
+        else if (j <= 0) j = WIDTH_TILES_MAX - 1;
+        else if (i >= HEIGHT_TILES_MAX) i = 0;
+        else if (i <= 0) i = HEIGHT_TILES_MAX - 1;
+        goto second_check;
+    }
+    if (checkCollisionWithWindow())
+    {
+        handleCollisionWithWindow();
+        checkCollision();
+        Assest* colidedWith = NULL;
+        return true;
+    }
+second_check:
+    Assets current;
+    if (world[i][j])
+    {
+        current = world[i][j]->type;
+        if(world[i][j])
+        this->colidedWith = world[i][j];
+        switch (current)
+        {
+        case Wall:
+            handleCollisionWithWall();
+            isColided = true;
+            break;
+        case RedObstacle:
+        case BlueObstacle:
+            handleCollisionWithStationryObstacle();
+            isColided = true;
+            break;
+        case Rock:
+        case Shuriken:
+            handleCollisionWithMovingObstacle();
+            isColided = true;
+            break;
+        case RedApple:
+        case GreenApple:
+        case GoldenApple:
+        case Cherry:
+            handleCollisionWithCollectable();
+            isColided = true;
+            break;
+        default:
+            break;
+        }
+    }
+    return isColided;
+}
 //TODO
 void Snake::handleDeath()
 {
