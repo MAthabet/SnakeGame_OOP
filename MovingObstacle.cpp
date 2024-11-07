@@ -55,10 +55,12 @@ void MovingObstacle::checkCollisionWithSnake(Snake* snake)
 	{
 		snakeX = snake->snake[i].getPosition().x;
 		snakeY = snake->snake[i].getPosition().y;
-		if (abs(x - snakeX) > TILE_SIZE)
+		if (abs(x - snakeX) >= TILE_SIZE/2)
 		{
-			if (abs(y - snakeY) > TILE_SIZE)
+			if (abs(y - snakeY) >= TILE_SIZE/2)
 				return;
+			else
+				snake->handleCollisionWithMovingObstacle(&assest, i);
 		}
 		else
 		{
