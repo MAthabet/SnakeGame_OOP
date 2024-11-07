@@ -11,11 +11,12 @@ void Game::displayScore()
     }
     sf::Text scoreText;
     scoreText.setFont(font);
-    scoreText.setCharacterSize(TILE_SIZE); 
+    scoreText.setCharacterSize(50); 
     scoreText.setFillColor(sf::Color::White); 
     scoreText.setPosition(0,0); 
     scoreText.setString("Score: " + std::to_string(player.Score));
-
+    if(!player.isAlive())
+        scoreText.setString("YOU DIED!");
     window.draw(scoreText);
 }
 Game::Game()
@@ -90,7 +91,7 @@ void Game::loop()
         player.checkCollision();
         for (int i = 0; i < MOVING_OBSTACLES_N; i++)
         {
-            AllMovingObs[i]->checkCollisionWithSnake(&player);
+            //AllMovingObs[i]->checkCollisionWithSnake(&player);
         }
 
 
