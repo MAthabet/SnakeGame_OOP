@@ -43,3 +43,31 @@ float MovingObstacle::getRotSpeed()
 {
 	return rotSpeed;
 }
+
+void MovingObstacle::checkCollisionWithSnake(Snake* snake)
+{
+	int x = assest.sprite->getPosition().x;
+	int y = assest.sprite->getPosition().y;
+	int size = snake->snake.size();
+	int snakeX;
+	int snakeY;
+	for (int i = size - 1; i >= 0; i--)
+	{
+		snakeX = snake->snake[i].getPosition().x;
+		snakeY = snake->snake[i].getPosition().y;
+		if (abs(x - snakeX) > TILE_SIZE)
+		{
+			if (abs(y - snakeY) > TILE_SIZE)
+				return;
+		}
+		else
+		{
+			snake->handleCollisionWithMovingObstacle(&assest, i);
+			return;
+		}
+	}
+}
+void MovingObstacle::moveToVoid()
+{
+
+}

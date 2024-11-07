@@ -26,6 +26,7 @@ Collidable* Generator::forceGenerate(Assets assest, int i, int j)
 	{
 		Assest temp = guard->assest;
 		temp.sprite->setPosition(j * TILE_SIZE + TILE_SIZE / 2, i * TILE_SIZE + TILE_SIZE / 2);
+		//TODO: just move the assest away from screen
 		world[i][j] = new Assest(temp.sprite, temp.type);
 		lastGeneratedIndex = { i,j };
 		lastGenerated = world[i][j];

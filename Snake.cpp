@@ -152,23 +152,26 @@ void Snake::handleCollisionWithCollectable()
     }
     DeleteTile(colidedWith->sprite->getPosition().x / TILE_SIZE, colidedWith->sprite->getPosition().y / TILE_SIZE);
 }
-void Snake::handleCollisionWithMovingObstacle()
+void Snake::handleCollisionWithMovingObstacle(Assest* assest, int collidedHere)
 {
     if (!shielded)
     {
-        switch (colidedWith->type)
+        switch (assest->type)
         {
         case Rock:
-            invertedInput = false;
+            // if hit head invert ether shrink
+            if(collidedHere == 0)
+                invertedInput = true;
+            else
+                shrink();
             break;
         case Shuriken:
-            shrink();
-            //TODO : cut();
+            cut(collidedHere);
             break;
         default:
             break;
         }
-        DeleteTile(colidedWith->sprite->getPosition().x / TILE_SIZE, colidedWith->sprite->getPosition().y / TILE_SIZE);
+        DeleteTile(assest->sprite->getPosition().x / TILE_SIZE, assest->sprite->getPosition().y / TILE_SIZE);
     }
 }
 void Snake::handleCollisionWithStationryObstacle()
@@ -249,11 +252,6 @@ second_check:
             handleCollisionWithStationryObstacle();
             isColided = true;
             break;
-        case Rock:
-        case Shuriken:
-            handleCollisionWithMovingObstacle();
-            isColided = true;
-            break;
         case RedApple:
         case GreenApple:
         case GoldenApple:
@@ -277,6 +275,13 @@ void Snake::draw(sf::RenderWindow* win)
     for (auto& spirit : snake)
     {
         win->draw(spirit);
+    }
+}
+void Snake::cut(int collidedHere)
+{
+    for (int i = health - collidedHere; i > 0; i++)
+    {
+        shrink();
     }
 }
 

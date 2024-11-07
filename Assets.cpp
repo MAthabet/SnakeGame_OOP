@@ -65,18 +65,18 @@ void Assest::flip(float speed)
         return;
     }
     
-    if (abs(x) < 0.24) inv = true;
-    else if(x > 0.95)inv = false;
-    if (inv)
-        flipInv(speed);
-    else
-    {
-        x *= speed;
-        this->sprite->setScale(
-            x,
-            this->sprite->getScale().y);
-        inv = true;
-    }
+    //if (abs(x) < 0.24) inv = true;
+    //else if(x > 0.95)inv = false;
+    //if (inv)
+    //    flipInv(speed);
+    //else
+    //{
+    //    x *= speed;
+    //    this->sprite->setScale(
+    //        x,
+    //        this->sprite->getScale().y);
+    //    inv = true;
+    //}
 }
 
 void Assest::rotate(float speed)

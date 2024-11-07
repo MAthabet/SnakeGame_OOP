@@ -18,7 +18,6 @@ bool Collidable::checkCollision()
 	if (checkCollisionWithWindow())
 	{
 		handleCollisionWithWindow();
-		Assest* colidedWith = NULL;
 		return true;
 	}
 	int j = position.x / TILE_SIZE;

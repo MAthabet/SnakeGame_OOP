@@ -25,7 +25,9 @@ int main()
                 window.close();
         }
             game.run();
-            break;
+            if(!game.IsRunning)
+                //TODO
+                break;
     }
 
     return 0;

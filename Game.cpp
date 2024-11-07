@@ -11,10 +11,8 @@ Game::Game()
 void Game::run()
 {
     start();
-    if (IsRunning)
-    {
-        loop();
-    }
+    loop();
+    IsRunning = false;
 }
 void Game::loop()
 {
@@ -29,7 +27,7 @@ void Game::loop()
 
     sf::Clock cherryClock;
     sf::Time cherryCoolDownTime = sf::seconds(CHERRY_COOLDOWN_TIME);
-    sf::Time cherryTimeLife = sf::seconds(CHERRY_TIME);
+    sf::Time cherryLife = sf::seconds(CHERRY_TIME);
     Generator cherryGenerator{&map}; 
 
     while (IsRunning && window.isOpen())
@@ -65,7 +63,7 @@ void Game::loop()
             generateCherry(&cherryGenerator);
             cherryClock.restart();
         }
-        else if (cherryClock.getElapsedTime() > cherryTimeLife)
+        else if (cherryClock.getElapsedTime() > cherryLife)
         {
             cherryGenerator.deleteLastGenerated();
         }
@@ -75,6 +73,11 @@ void Game::loop()
 
         player.checkSelfCollision();
         player.checkCollision();
+        for (int i = 0; i < MOVING_OBSTACLES_N; i++)
+        {
+            AllMovingObs[i]->checkCollisionWithSnake(&player);
+        }
+
 
         // Clear the screen
         window.clear();

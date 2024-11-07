@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Obstacle.h"
+#include "Snake.h"
 
 enum Axis{Vertical, Horizontal};
 
@@ -14,7 +15,7 @@ public:
 
 	float getLinSpeed();
 	float getRotSpeed();
-
+	void checkCollisionWithSnake(Snake* snake);
 
 protected:
 	void setSpeed(float s);
@@ -24,7 +25,7 @@ protected:
 	float rotSpeed;
 	float const LIN_TO_ROT = 30;
 	sf::Vector2i direction;
-
+	void moveToVoid();
 private:
 
 };

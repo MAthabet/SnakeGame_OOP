@@ -33,6 +33,7 @@ public:
 	void setSpeed(int speed);
 	void updatePosition();
 	void checkSelfCollision();
+	void handleCollisionWithMovingObstacle(Assest* assest, int collidedHere);
 
 private:
 	bool Alive = true;
@@ -40,12 +41,12 @@ private:
 	void handleDeath();
 	void handleCollisionWithWindow();
 	void handleCollisionWithCollectable();
-	void handleCollisionWithMovingObstacle();
 	void handleCollisionWithStationryObstacle();
 	void handleCollisionWithWall();
 	void updateDirection();
 	void grow();
 	void shrink();
+	void cut(int collidedHere);
 	sf::Vector2i direction;
 	sf::Vector2f tailStartPosition;
 };
