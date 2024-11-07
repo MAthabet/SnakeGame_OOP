@@ -19,6 +19,8 @@ void Game::run()
 void Game::loop()
 {
     Generator foodGenerator{ sf::seconds(APPLE_COOLDOWN_TIME), &map };
+    Generator ShurikenGenerator{ sf::seconds(SHURIKEN_COOLDOWN_TIME), &map };
+    Generator RockGenerator{ sf::seconds(ROCK_COOLDOWN_TIME), &map };
 
     sf::Clock goldenAppleClock;
     sf::Time goldenAppleTime = sf::seconds(GOLDEN_APPLE_TIME);
@@ -37,10 +39,16 @@ void Game::loop()
             if (event.type == sf::Event::Closed)
                 window.close();
         }
+        if (!world[0][0])
+        {
+            printf("here");
+        }
 
         handleinput();
 
         player.move();
+        moveAllObs(1);
+        flipAllcol();
 
         generateFood(&foodGenerator);
 
@@ -49,13 +57,14 @@ void Game::loop()
             goldenAppleGenerator.deleteLastGenerated();
             goldenAppleOnScreen_flag = false;
         }
-        else if (!goldenAppleOnScreen_flag && (player.collectedApples + 1) % 2 == 0)
+        else if (!goldenAppleOnScreen_flag && (player.collectedApples + 1) % 10 == 0)
         {
             generateGoldenApple(&goldenAppleGenerator);
             goldenAppleClock.restart();
             goldenAppleOnScreen_flag = true;
         }
 
+        
         if (cherryClock.getElapsedTime() > cherryCoolDownTime)
         {
             generateCherry(&cherryGenerator);
@@ -65,6 +74,9 @@ void Game::loop()
         {
             cherryGenerator.deleteLastGenerated();
         }
+
+        generateRock(&RockGenerator);
+        generateShuriken(&ShurikenGenerator);
 
         player.checkSelfCollision();
         player.checkCollision();
@@ -167,11 +179,13 @@ Collidable* Game::generateCherry(Generator* generator)
 }
 Collidable* Game::generateRock(Generator* generator)
 {
-    return NULL;
+    std::pair<int, int> rand = generator->generateEmptyTile();
+    return generator->generate(Rock, 0, rand.second);
 }
 Collidable* Game::generateShuriken(Generator* generator)
 {
-    return NULL;
+    std::pair<int, int> rand = generator->generateEmptyTile();
+    return generator->generate(Shuriken, rand.first, rand.second);
 }
 
 void Game::openGameWin()
@@ -198,8 +212,8 @@ void Game::updateAllCollectables()
 
 void Game::updateAllMovingObs()
 {
-	AllMovingObs[0] = new MovingObstacle(&rock, Assets::Rock);
-	AllMovingObs[1] = new MovingObstacle(&shuriken, Assets::Shuriken);
+	AllMovingObs[0] = new MovingObstacle(&rock, Assets::Rock, Axis::Horizontal);
+	AllMovingObs[1] = new MovingObstacle(&shuriken, Assets::Shuriken, Axis::Vertical);
 }
 void Game::handleinput()
 {
@@ -227,4 +241,19 @@ void Game::invertInput()
         player.lastInput = Direction::Left;
     else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left) && player.lastInput != Direction::Left)
         player.lastInput = Direction::Right;
+}
+
+void Game::moveAllObs(float speed)
+{
+    for (int i = 0; i < MOVING_OBSTACLES_N; i++)
+    {
+        AllMovingObs[i]->move(speed);
+    }
+}
+void Game::flipAllcol(float speed)
+{
+    for (int i = 0; i < COLLECTIBLES_N; i++)
+    {
+        AllCollectables[i]->assest.flip();
+    }
 }

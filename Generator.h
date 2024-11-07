@@ -23,6 +23,7 @@ public:
 
 private:
 	std::pair<int, int> lastGeneratedIndex;
+	Assest* lastGenerated;
 	bool hadGenerated = false;
 	Map* map;
 	sf::Clock clock;

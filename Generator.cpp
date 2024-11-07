@@ -28,6 +28,7 @@ Collidable* Generator::forceGenerate(Assets assest, int i, int j)
 		temp.sprite->setPosition(j * TILE_SIZE + TILE_SIZE / 2, i * TILE_SIZE + TILE_SIZE / 2);
 		world[i][j] = new Assest(temp.sprite, temp.type);
 		lastGeneratedIndex = { i,j };
+		lastGenerated = world[i][j];
 		clock.restart();
 		tileNotFree(i, j);
 		hadGenerated = true;
@@ -93,7 +94,18 @@ void Generator::DeleteTile(int i, int j)
 }
 void Generator::deleteLastGenerated()
 {
-	DeleteTile(lastGeneratedIndex.first, lastGeneratedIndex.second);
+	if (!hadGenerated) return;
+	if (!lastGenerated) return;
+	sf::Vector2f lastGeneratedIndex = lastGenerated->sprite->getPosition();
+	int i = lastGeneratedIndex.y / TILE_SIZE;
+	int j = lastGeneratedIndex.x / TILE_SIZE;
+
+	if (i < 0) i = 0;
+	else if (i >= HEIGHT_TILES_MAX) i = HEIGHT_TILES_MAX - 1;
+	if (j < 0) j = 0;
+	else if (j >= WIDTH_TILES_MAX) j = WIDTH_TILES_MAX - 1;
+
+	DeleteTile(i,j);
 }
 bool Generator::hasGenerated()
 {

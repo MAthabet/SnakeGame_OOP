@@ -38,6 +38,9 @@ private:
 	void handleDeath();
 	void handleinput();
 	void invertInput();
+	void moveAllObs(float speed);
+	void flipAllcol(float speed = 1);
+
 
 	Collidable* generateFood(Generator* generator);
 	Collidable* generateApple(Generator* generator);
