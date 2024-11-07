@@ -1,4 +1,114 @@
 ﻿C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets(531,5): warning MSB8028: The intermediate directory (Debug\) contains files shared from another project (Project1.vcxproj).  This can lead to incorrect clean and rebuild behavior.
+  Assets.cpp
+D:\ITI-GameDev\Project1\Project1\Assets.cpp(97,37): warning C4244: '=': conversion from 'T' to 'int', possible loss of data
+D:\ITI-GameDev\Project1\Project1\Assets.cpp(97,37): warning C4244:         with
+D:\ITI-GameDev\Project1\Project1\Assets.cpp(97,37): warning C4244:         [
+D:\ITI-GameDev\Project1\Project1\Assets.cpp(97,37): warning C4244:             T=float
+D:\ITI-GameDev\Project1\Project1\Assets.cpp(97,37): warning C4244:         ]
+D:\ITI-GameDev\Project1\Project1\Assets.cpp(98,37): warning C4244: '=': conversion from 'T' to 'int', possible loss of data
+D:\ITI-GameDev\Project1\Project1\Assets.cpp(98,37): warning C4244:         with
+D:\ITI-GameDev\Project1\Project1\Assets.cpp(98,37): warning C4244:         [
+D:\ITI-GameDev\Project1\Project1\Assets.cpp(98,37): warning C4244:             T=float
+D:\ITI-GameDev\Project1\Project1\Assets.cpp(98,37): warning C4244:         ]
+D:\ITI-GameDev\Project1\Project1\Assets.cpp(101,23): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\ITI-GameDev\Project1\Project1\Assets.cpp(100,23): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\ITI-GameDev\Project1\Project1\Assets.cpp(102,36): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\ITI-GameDev\Project1\Project1\Assets.cpp(102,29): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  Collectible.cpp
+  Collidable.cpp
+D:\ITI-GameDev\Project1\Project1\Collidable.cpp(23,8): warning C4244: 'initializing': conversion from 'T' to 'int', possible loss of data
+D:\ITI-GameDev\Project1\Project1\Collidable.cpp(23,8): warning C4244:         with
+D:\ITI-GameDev\Project1\Project1\Collidable.cpp(23,8): warning C4244:         [
+D:\ITI-GameDev\Project1\Project1\Collidable.cpp(23,8): warning C4244:             T=float
+D:\ITI-GameDev\Project1\Project1\Collidable.cpp(23,8): warning C4244:         ]
+D:\ITI-GameDev\Project1\Project1\Collidable.cpp(24,8): warning C4244: 'initializing': conversion from 'T' to 'int', possible loss of data
+D:\ITI-GameDev\Project1\Project1\Collidable.cpp(24,8): warning C4244:         with
+D:\ITI-GameDev\Project1\Project1\Collidable.cpp(24,8): warning C4244:         [
+D:\ITI-GameDev\Project1\Project1\Collidable.cpp(24,8): warning C4244:             T=float
+D:\ITI-GameDev\Project1\Project1\Collidable.cpp(24,8): warning C4244:         ]
+D:\ITI-GameDev\Project1\Project1\Collidable.cpp(61,8): warning C4244: 'initializing': conversion from 'T' to 'int', possible loss of data
+D:\ITI-GameDev\Project1\Project1\Collidable.cpp(61,8): warning C4244:         with
+D:\ITI-GameDev\Project1\Project1\Collidable.cpp(61,8): warning C4244:         [
+D:\ITI-GameDev\Project1\Project1\Collidable.cpp(61,8): warning C4244:             T=float
+D:\ITI-GameDev\Project1\Project1\Collidable.cpp(61,8): warning C4244:         ]
+D:\ITI-GameDev\Project1\Project1\Collidable.cpp(62,8): warning C4244: 'initializing': conversion from 'T' to 'int', possible loss of data
+D:\ITI-GameDev\Project1\Project1\Collidable.cpp(62,8): warning C4244:         with
+D:\ITI-GameDev\Project1\Project1\Collidable.cpp(62,8): warning C4244:         [
+D:\ITI-GameDev\Project1\Project1\Collidable.cpp(62,8): warning C4244:             T=float
+D:\ITI-GameDev\Project1\Project1\Collidable.cpp(62,8): warning C4244:         ]
+D:\ITI-GameDev\Project1\Project1\Collidable.cpp(71,48): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
+D:\ITI-GameDev\Project1\Project1\Collidable.cpp(71,48): warning C4244:         with
+D:\ITI-GameDev\Project1\Project1\Collidable.cpp(71,48): warning C4244:         [
+D:\ITI-GameDev\Project1\Project1\Collidable.cpp(71,48): warning C4244:             T=float
+D:\ITI-GameDev\Project1\Project1\Collidable.cpp(71,48): warning C4244:         ]
+D:\ITI-GameDev\Project1\Project1\Collidable.cpp(71,24): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
+D:\ITI-GameDev\Project1\Project1\Collidable.cpp(71,24): warning C4244:         with
+D:\ITI-GameDev\Project1\Project1\Collidable.cpp(71,24): warning C4244:         [
+D:\ITI-GameDev\Project1\Project1\Collidable.cpp(71,24): warning C4244:             T=float
+D:\ITI-GameDev\Project1\Project1\Collidable.cpp(71,24): warning C4244:         ]
+D:\ITI-GameDev\Project1\Project1\Collidable.cpp(76,60): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
+D:\ITI-GameDev\Project1\Project1\Collidable.cpp(76,60): warning C4244:         with
+D:\ITI-GameDev\Project1\Project1\Collidable.cpp(76,60): warning C4244:         [
+D:\ITI-GameDev\Project1\Project1\Collidable.cpp(76,60): warning C4244:             T=float
+D:\ITI-GameDev\Project1\Project1\Collidable.cpp(76,60): warning C4244:         ]
+D:\ITI-GameDev\Project1\Project1\Collidable.cpp(76,30): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
+D:\ITI-GameDev\Project1\Project1\Collidable.cpp(76,30): warning C4244:         with
+D:\ITI-GameDev\Project1\Project1\Collidable.cpp(76,30): warning C4244:         [
+D:\ITI-GameDev\Project1\Project1\Collidable.cpp(76,30): warning C4244:             T=float
+D:\ITI-GameDev\Project1\Project1\Collidable.cpp(76,30): warning C4244:         ]
+D:\ITI-GameDev\Project1\Project1\Collidable.cpp(82,100): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
+D:\ITI-GameDev\Project1\Project1\Collidable.cpp(82,100): warning C4244:         with
+D:\ITI-GameDev\Project1\Project1\Collidable.cpp(82,100): warning C4244:         [
+D:\ITI-GameDev\Project1\Project1\Collidable.cpp(82,100): warning C4244:             T=float
+D:\ITI-GameDev\Project1\Project1\Collidable.cpp(82,100): warning C4244:         ]
+D:\ITI-GameDev\Project1\Project1\Collidable.cpp(82,50): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
+D:\ITI-GameDev\Project1\Project1\Collidable.cpp(82,50): warning C4244:         with
+D:\ITI-GameDev\Project1\Project1\Collidable.cpp(82,50): warning C4244:         [
+D:\ITI-GameDev\Project1\Project1\Collidable.cpp(82,50): warning C4244:             T=float
+D:\ITI-GameDev\Project1\Project1\Collidable.cpp(82,50): warning C4244:         ]
+D:\ITI-GameDev\Project1\Project1\Collidable.cpp(86,100): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
+D:\ITI-GameDev\Project1\Project1\Collidable.cpp(86,100): warning C4244:         with
+D:\ITI-GameDev\Project1\Project1\Collidable.cpp(86,100): warning C4244:         [
+D:\ITI-GameDev\Project1\Project1\Collidable.cpp(86,100): warning C4244:             T=float
+D:\ITI-GameDev\Project1\Project1\Collidable.cpp(86,100): warning C4244:         ]
+D:\ITI-GameDev\Project1\Project1\Collidable.cpp(86,50): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
+D:\ITI-GameDev\Project1\Project1\Collidable.cpp(86,50): warning C4244:         with
+D:\ITI-GameDev\Project1\Project1\Collidable.cpp(86,50): warning C4244:         [
+D:\ITI-GameDev\Project1\Project1\Collidable.cpp(86,50): warning C4244:             T=float
+D:\ITI-GameDev\Project1\Project1\Collidable.cpp(86,50): warning C4244:         ]
+D:\ITI-GameDev\Project1\Project1\Collidable.cpp(90,48): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
+D:\ITI-GameDev\Project1\Project1\Collidable.cpp(90,48): warning C4244:         with
+D:\ITI-GameDev\Project1\Project1\Collidable.cpp(90,48): warning C4244:         [
+D:\ITI-GameDev\Project1\Project1\Collidable.cpp(90,48): warning C4244:             T=float
+D:\ITI-GameDev\Project1\Project1\Collidable.cpp(90,48): warning C4244:         ]
+D:\ITI-GameDev\Project1\Project1\Collidable.cpp(90,24): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
+D:\ITI-GameDev\Project1\Project1\Collidable.cpp(90,24): warning C4244:         with
+D:\ITI-GameDev\Project1\Project1\Collidable.cpp(90,24): warning C4244:         [
+D:\ITI-GameDev\Project1\Project1\Collidable.cpp(90,24): warning C4244:             T=float
+D:\ITI-GameDev\Project1\Project1\Collidable.cpp(90,24): warning C4244:         ]
+  Game.cpp
+D:\ITI-GameDev\Project1\Project1\Game.h(18,38): warning C4305: 'initializing': truncation from 'double' to 'const float'
+  (compiling source file 'Game.cpp')
+  
+D:\ITI-GameDev\Project1\Project1\Game.cpp(183,15): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+D:\ITI-GameDev\Project1\Project1\Game.cpp(201,15): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  Generator.cpp
+D:\ITI-GameDev\Project1\Project1\Generator.cpp(28,73): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\ITI-GameDev\Project1\Project1\Generator.cpp(28,42): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\ITI-GameDev\Project1\Project1\Generator.cpp(62,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+D:\ITI-GameDev\Project1\Project1\Generator.cpp(101,8): warning C4244: 'initializing': conversion from 'T' to 'int', possible loss of data
+D:\ITI-GameDev\Project1\Project1\Generator.cpp(101,8): warning C4244:         with
+D:\ITI-GameDev\Project1\Project1\Generator.cpp(101,8): warning C4244:         [
+D:\ITI-GameDev\Project1\Project1\Generator.cpp(101,8): warning C4244:             T=float
+D:\ITI-GameDev\Project1\Project1\Generator.cpp(101,8): warning C4244:         ]
+D:\ITI-GameDev\Project1\Project1\Generator.cpp(102,8): warning C4244: 'initializing': conversion from 'T' to 'int', possible loss of data
+D:\ITI-GameDev\Project1\Project1\Generator.cpp(102,8): warning C4244:         with
+D:\ITI-GameDev\Project1\Project1\Generator.cpp(102,8): warning C4244:         [
+D:\ITI-GameDev\Project1\Project1\Generator.cpp(102,8): warning C4244:             T=float
+D:\ITI-GameDev\Project1\Project1\Generator.cpp(102,8): warning C4244:         ]
+  Map.cpp
+D:\ITI-GameDev\Project1\Project1\Map.cpp(90,69): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\ITI-GameDev\Project1\Project1\Map.cpp(90,38): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
   MovingObstacle.cpp
 D:\ITI-GameDev\Project1\Project1\MovingObstacle.cpp(21,11): warning C4244: 'initializing': conversion from 'const T' to 'int', possible loss of data
 D:\ITI-GameDev\Project1\Project1\MovingObstacle.cpp(21,11): warning C4244:         with
@@ -34,4 +144,90 @@ D:\ITI-GameDev\Project1\Project1\MovingObstacle.cpp(57,41): warning C4244:      
 D:\ITI-GameDev\Project1\Project1\MovingObstacle.cpp(57,41): warning C4244:         [
 D:\ITI-GameDev\Project1\Project1\MovingObstacle.cpp(57,41): warning C4244:             T=float
 D:\ITI-GameDev\Project1\Project1\MovingObstacle.cpp(57,41): warning C4244:         ]
+  Obstacles.cpp
+  Rock.cpp
+  Shuriken.cpp
+  Snake.cpp
+D:\ITI-GameDev\Project1\Project1\Snake.cpp(101,11): warning C4244: 'initializing': conversion from 'const T' to 'int', possible loss of data
+D:\ITI-GameDev\Project1\Project1\Snake.cpp(101,11): warning C4244:         with
+D:\ITI-GameDev\Project1\Project1\Snake.cpp(101,11): warning C4244:         [
+D:\ITI-GameDev\Project1\Project1\Snake.cpp(101,11): warning C4244:             T=float
+D:\ITI-GameDev\Project1\Project1\Snake.cpp(101,11): warning C4244:         ]
+D:\ITI-GameDev\Project1\Project1\Snake.cpp(102,11): warning C4244: 'initializing': conversion from 'const T' to 'int', possible loss of data
+D:\ITI-GameDev\Project1\Project1\Snake.cpp(102,11): warning C4244:         with
+D:\ITI-GameDev\Project1\Project1\Snake.cpp(102,11): warning C4244:         [
+D:\ITI-GameDev\Project1\Project1\Snake.cpp(102,11): warning C4244:             T=float
+D:\ITI-GameDev\Project1\Project1\Snake.cpp(102,11): warning C4244:         ]
+D:\ITI-GameDev\Project1\Project1\Snake.cpp(117,11): warning C4244: 'initializing': conversion from 'const T' to 'int', possible loss of data
+D:\ITI-GameDev\Project1\Project1\Snake.cpp(117,11): warning C4244:         with
+D:\ITI-GameDev\Project1\Project1\Snake.cpp(117,11): warning C4244:         [
+D:\ITI-GameDev\Project1\Project1\Snake.cpp(117,11): warning C4244:             T=float
+D:\ITI-GameDev\Project1\Project1\Snake.cpp(117,11): warning C4244:         ]
+D:\ITI-GameDev\Project1\Project1\Snake.cpp(118,11): warning C4244: 'initializing': conversion from 'const T' to 'int', possible loss of data
+D:\ITI-GameDev\Project1\Project1\Snake.cpp(118,11): warning C4244:         with
+D:\ITI-GameDev\Project1\Project1\Snake.cpp(118,11): warning C4244:         [
+D:\ITI-GameDev\Project1\Project1\Snake.cpp(118,11): warning C4244:             T=float
+D:\ITI-GameDev\Project1\Project1\Snake.cpp(118,11): warning C4244:         ]
+D:\ITI-GameDev\Project1\Project1\Snake.cpp(120,47): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\ITI-GameDev\Project1\Project1\Snake.cpp(122,54): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\ITI-GameDev\Project1\Project1\Snake.cpp(124,30): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\ITI-GameDev\Project1\Project1\Snake.cpp(126,30): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\ITI-GameDev\Project1\Project1\Snake.cpp(153,103): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
+D:\ITI-GameDev\Project1\Project1\Snake.cpp(153,103): warning C4244:         with
+D:\ITI-GameDev\Project1\Project1\Snake.cpp(153,103): warning C4244:         [
+D:\ITI-GameDev\Project1\Project1\Snake.cpp(153,103): warning C4244:             T=float
+D:\ITI-GameDev\Project1\Project1\Snake.cpp(153,103): warning C4244:         ]
+D:\ITI-GameDev\Project1\Project1\Snake.cpp(153,53): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
+D:\ITI-GameDev\Project1\Project1\Snake.cpp(153,53): warning C4244:         with
+D:\ITI-GameDev\Project1\Project1\Snake.cpp(153,53): warning C4244:         [
+D:\ITI-GameDev\Project1\Project1\Snake.cpp(153,53): warning C4244:             T=float
+D:\ITI-GameDev\Project1\Project1\Snake.cpp(153,53): warning C4244:         ]
+D:\ITI-GameDev\Project1\Project1\Snake.cpp(174,97): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
+D:\ITI-GameDev\Project1\Project1\Snake.cpp(174,97): warning C4244:         with
+D:\ITI-GameDev\Project1\Project1\Snake.cpp(174,97): warning C4244:         [
+D:\ITI-GameDev\Project1\Project1\Snake.cpp(174,97): warning C4244:             T=float
+D:\ITI-GameDev\Project1\Project1\Snake.cpp(174,97): warning C4244:         ]
+D:\ITI-GameDev\Project1\Project1\Snake.cpp(174,52): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
+D:\ITI-GameDev\Project1\Project1\Snake.cpp(174,52): warning C4244:         with
+D:\ITI-GameDev\Project1\Project1\Snake.cpp(174,52): warning C4244:         [
+D:\ITI-GameDev\Project1\Project1\Snake.cpp(174,52): warning C4244:             T=float
+D:\ITI-GameDev\Project1\Project1\Snake.cpp(174,52): warning C4244:         ]
+D:\ITI-GameDev\Project1\Project1\Snake.cpp(200,103): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
+D:\ITI-GameDev\Project1\Project1\Snake.cpp(200,103): warning C4244:         with
+D:\ITI-GameDev\Project1\Project1\Snake.cpp(200,103): warning C4244:         [
+D:\ITI-GameDev\Project1\Project1\Snake.cpp(200,103): warning C4244:             T=float
+D:\ITI-GameDev\Project1\Project1\Snake.cpp(200,103): warning C4244:         ]
+D:\ITI-GameDev\Project1\Project1\Snake.cpp(200,53): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
+D:\ITI-GameDev\Project1\Project1\Snake.cpp(200,53): warning C4244:         with
+D:\ITI-GameDev\Project1\Project1\Snake.cpp(200,53): warning C4244:         [
+D:\ITI-GameDev\Project1\Project1\Snake.cpp(200,53): warning C4244:             T=float
+D:\ITI-GameDev\Project1\Project1\Snake.cpp(200,53): warning C4244:         ]
+D:\ITI-GameDev\Project1\Project1\Snake.cpp(209,107): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
+D:\ITI-GameDev\Project1\Project1\Snake.cpp(209,107): warning C4244:         with
+D:\ITI-GameDev\Project1\Project1\Snake.cpp(209,107): warning C4244:         [
+D:\ITI-GameDev\Project1\Project1\Snake.cpp(209,107): warning C4244:             T=float
+D:\ITI-GameDev\Project1\Project1\Snake.cpp(209,107): warning C4244:         ]
+D:\ITI-GameDev\Project1\Project1\Snake.cpp(209,57): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
+D:\ITI-GameDev\Project1\Project1\Snake.cpp(209,57): warning C4244:         with
+D:\ITI-GameDev\Project1\Project1\Snake.cpp(209,57): warning C4244:         [
+D:\ITI-GameDev\Project1\Project1\Snake.cpp(209,57): warning C4244:             T=float
+D:\ITI-GameDev\Project1\Project1\Snake.cpp(209,57): warning C4244:         ]
+D:\ITI-GameDev\Project1\Project1\Snake.cpp(217,11): warning C4244: 'initializing': conversion from 'T' to 'int', possible loss of data
+D:\ITI-GameDev\Project1\Project1\Snake.cpp(217,11): warning C4244:         with
+D:\ITI-GameDev\Project1\Project1\Snake.cpp(217,11): warning C4244:         [
+D:\ITI-GameDev\Project1\Project1\Snake.cpp(217,11): warning C4244:             T=float
+D:\ITI-GameDev\Project1\Project1\Snake.cpp(217,11): warning C4244:         ]
+D:\ITI-GameDev\Project1\Project1\Snake.cpp(218,11): warning C4244: 'initializing': conversion from 'T' to 'int', possible loss of data
+D:\ITI-GameDev\Project1\Project1\Snake.cpp(218,11): warning C4244:         with
+D:\ITI-GameDev\Project1\Project1\Snake.cpp(218,11): warning C4244:         [
+D:\ITI-GameDev\Project1\Project1\Snake.cpp(218,11): warning C4244:             T=float
+D:\ITI-GameDev\Project1\Project1\Snake.cpp(218,11): warning C4244:         ]
+  StationaryObstacle.cpp
+  main.cpp
+D:\ITI-GameDev\Project1\Project1\Game.h(18,38): warning C4305: 'initializing': truncation from 'double' to 'const float'
+  (compiling source file 'main.cpp')
+  
+  Generating Code...
+D:\ITI-GameDev\Project1\Project1\Game.cpp(155): warning C4715: 'Game::generateFood': not all control paths return a value
+D:\ITI-GameDev\Project1\Project1\Game.cpp(218): warning C4715: 'Game::loadSpritesheet': not all control paths return a value
   Project1.vcxproj -> D:\ITI-GameDev\Project1\Debug\Snake Game.exe

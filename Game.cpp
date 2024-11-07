@@ -3,7 +3,21 @@
 
 Collectible* AllCollectables[COLLECTIBLES_N];
 MovingObstacle* AllMovingObs[MOVING_OBSTACLES_N];
+void Game::displayScore()
+{
+    sf::Font font;
+    if (!font.loadFromFile(Font_Path)) {
+        printf("can not load font");
+    }
+    sf::Text scoreText;
+    scoreText.setFont(font);
+    scoreText.setCharacterSize(TILE_SIZE); 
+    scoreText.setFillColor(sf::Color::White); 
+    scoreText.setPosition(0,0); 
+    scoreText.setString("Score: " + std::to_string(player.Score));
 
+    window.draw(scoreText);
+}
 Game::Game()
 {
     return;
@@ -14,6 +28,7 @@ void Game::run()
     loop();
     IsRunning = false;
 }
+
 void Game::loop()
 {
     Generator foodGenerator{ sf::seconds(APPLE_COOLDOWN_TIME), &map };
@@ -87,6 +102,7 @@ void Game::loop()
         {
             player.draw(&window);
         }
+        displayScore();
         window.display();
     }
     end();

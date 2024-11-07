@@ -21,6 +21,7 @@ public:
 	bool haseEatenApple = true;
 	int collectedApples = 0;
 	void draw(sf::RenderWindow* win);
+	int Score = 0;
 
 	Snake();
 

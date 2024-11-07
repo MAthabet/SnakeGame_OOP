@@ -25,6 +25,8 @@ private:
 	Snake player;
 	Map map;
 
+	void displayScore();
+
 	void start();
 	void loop();
 	void end();
