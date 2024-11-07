@@ -112,6 +112,11 @@ void Assest::flipInv(float speed)
         this->sprite->getScale().y);
 }
 
+void move(float speed)
+{
+
+}
+
 
 
 

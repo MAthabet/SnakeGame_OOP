@@ -10,7 +10,7 @@ int main()
 {
     Game game;
     // Create the main window
-    sf::RenderWindow window(sf::VideoMode(GAME_W_MAX, GAME_H_MAX), "Snake Game Test");
+    sf::RenderWindow window(sf::VideoMode(GAMEwin_W_MAX, GAMEwin_H_MAX), "Snake Game Test");
     window.setFramerateLimit(GAME_SPEED);
     // Load the sprite sheet
     

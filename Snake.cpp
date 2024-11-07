@@ -23,7 +23,14 @@ void Snake::initSnake(int snakeLength, sf::Vector2f start, Map* map)
 void Snake::grow()
 {
     sf::Sprite sprite = snake.back();
+    health++;
+    snake.push_back(sprite);
+}
 
+void Snake::shrink()
+{
+    sf::Sprite sprite = snake.back();
+    health--;
     snake.push_back(sprite);
 }
 
@@ -122,15 +129,15 @@ void Snake::handleCollisionWithCollectable()
     case RedApple:
     case GreenApple:
         Score += colidedWith->type * 10;
-        health++;
         collectedApples++;
         haseEatenApple = true;
-        printf("%d ", collectedApples);
+        printf("%d",collectedApples);
         grow();
         break;
     case GoldenApple:
         shielded = true;
         Score += GoldenApple * 10;
+        collectedApples++;
         break;
     case Cherry:
         Score += Cherry * 10;
@@ -151,7 +158,7 @@ void Snake::handleCollisionWithMovingObstacle()
             handleDeath();
             break;
         case Shuriken:
-            health--;
+            shrink();
             break;
         default:
             break;
@@ -171,7 +178,7 @@ void Snake::handleCollisionWithStationryObstacle()
         invertedInput = true;
         break;
     case BlueObstacle:
-        health--;
+        shrink();
         break;
     default:
         break;
@@ -252,6 +259,13 @@ second_check:
 void Snake::handleDeath()
 {
     Alive = false;
+}
+void Snake::draw(sf::RenderWindow* win)
+{
+    for (auto& spirit : snake)
+    {
+        win->draw(spirit);
+    }
 }
 
 

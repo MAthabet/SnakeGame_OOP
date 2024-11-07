@@ -1,11 +1,12 @@
 #include "Game.h"
+#include <cstdlib>
 
 Collectible* AllCollectables[COLLECTIBLES_N];
 MovingObstacle* AllMovingObs[MOVING_OBSTACLES_N];
 
 Game::Game()
 {
-	return;
+    return;
 }
 void Game::run()
 {
@@ -17,9 +18,20 @@ void Game::run()
 }
 void Game::loop()
 {
+    Generator foodGenerator{ sf::seconds(APPLE_COOLDOWN_TIME), &map };
 
-	while (IsRunning && window.isOpen())
-	{
+    sf::Clock goldenAppleClock;
+    sf::Time goldenAppleTime = sf::seconds(GOLDEN_APPLE_TIME);
+    Generator goldenAppleGenerator{&map};
+    bool goldenAppleOnScreen_flag = false;
+
+    sf::Clock cherryClock;
+    sf::Time cherryCoolDownTime = sf::seconds(CHERRY_COOLDOWN_TIME);
+    sf::Time cherryTimeLife = sf::seconds(CHERRY_TIME);
+    Generator cherryGenerator{&map};    
+
+    while (IsRunning && window.isOpen())
+    {
         sf::Event event;
         while (window.pollEvent(event)) {
             if (event.type == sf::Event::Closed)
@@ -30,104 +42,141 @@ void Game::loop()
 
         player.move();
 
-        generateCollictable(&collecablesGenerator);
-        generateMovingObs();
+        generateFood(&foodGenerator);
+
+        if (goldenAppleGenerator.hasGenerated() && goldenAppleClock.getElapsedTime() > goldenAppleTime)
+        {
+            goldenAppleGenerator.deleteLastGenerated();
+            goldenAppleOnScreen_flag = false;
+        }
+        else if (!goldenAppleOnScreen_flag && (player.collectedApples + 1) % 2 == 0)
+        {
+            generateGoldenApple(&goldenAppleGenerator);
+            goldenAppleClock.restart();
+            goldenAppleOnScreen_flag = true;
+        }
+
+        if (cherryClock.getElapsedTime() > cherryCoolDownTime)
+        {
+            generateCherry(&cherryGenerator);
+            cherryClock.restart();
+        }
+        else if (cherryClock.getElapsedTime() > cherryTimeLife)
+        {
+            cherryGenerator.deleteLastGenerated();
+        }
 
         player.checkSelfCollision();
         player.checkCollision();
-        
+
         // Clear the screen
         window.clear();
 
         map.draw(&window);
         if (player.isAlive())
         {
-            for (auto& spirit : player.snake)
-            {
-                window.draw(spirit);
-            }
+            player.draw(&window);
         }
-
         window.display();
-	}
-	end();
+    }
+    end();
 }
 void Game::start()
 {
-	loadSpritesheet();
-	resizeAllAssets();
-	openGameWin();
-	updateAllCollectables();
-	updateAllMovingObs();
-    window.create(sf::VideoMode(GAME_W_MAX, GAME_H_MAX), "Snake Game");
-	window.setFramerateLimit(GAME_SPEED);
-	map.fileToArray(Resources_map);
-	player.initSnake(SNAKE_INIT_SIZE, map.PlayerTailStart, &map);
-	IsRunning = true;
+    loadSpritesheet();
+    resizeAllAssets();
+    updateAllCollectables();
+    updateAllMovingObs();
+
+    openGameWin();
+    
+    map.fileToArray(Resources_map);
+    player.initSnake(SNAKE_INIT_SIZE, map.PlayerTailStart, &map);
+    IsRunning = true;
 }
 void Game::end()
 {
-	IsRunning = false;
+    IsRunning = false;
     map.deleteMap();
 }
 void Game::restart()
 {
-	IsRunning = true;
+    IsRunning = true;
 
 }
 void Game::handleDeath()
 {
 
 }
-void Game::generateCollictable(Generator* collectableGen)
+
+Collidable* Game::generateFood(Generator* generator)
 {
-    if (player.colidedWith == NULL)
+    if (player.haseEatenApple)
     {
-        generateApple();
+        player.haseEatenApple = false;
+        return forceGenerateApple(generator);
+    }
+    if (player.colidedWith == NULL) //Just Guard
+    {
+        generateApple(generator);
         player.haseEatenApple = false;
     }
-    else if (player.collectedApples+1 % 5 != 0 && (player.colidedWith->type == Assets::RedApple || player.colidedWith->type == Assets::GreenApple))
+    else if ((player.collectedApples + 1) % 5 != 0 && (player.colidedWith->type == Assets::RedApple || player.colidedWith->type == Assets::GreenApple))
     {
-            generateApple();
-            player.haseEatenApple = false;
+        generateApple(generator);
+        player.haseEatenApple = false;
     }
-    else  generateGoldenApple();
 }
-void Game::generateMovingObs()
+Collidable* Game::generateApple(Generator* generator)
 {
-
-}
-void Game::generateApple()
-{
-    std::pair<int,int> rand = collecablesGenerator.generateEmptyTile();
+    std::pair<int,int> rand = generator->generateEmptyTile();
     if (((player.collectedApples + 1) % 4) == 0)
     {
-        collecablesGenerator.generate(GreenApple, rand.first, rand.second);
-        printf("herre");
+        return generator->generate(GreenApple, rand.first, rand.second);
     }
     else
-        collecablesGenerator.generate(RedApple, rand.first, rand.second);
+        return generator->generate(RedApple, rand.first, rand.second);
 }
-void Game::generateGoldenApple()
+Collidable* Game::forceGenerateApple(Generator* generator)
 {
-    std::pair<int, int> rand = collecablesGenerator.generateEmptyTile();
-    collecablesGenerator.generate(GoldenApple, rand.first, rand.second);
+        std::pair<int, int> rand = generator->generateEmptyTile();
+        if (((player.collectedApples + 1) % 4) == 0)
+        {
+            return generator->forceGenerate(GreenApple, rand.first, rand.second);
+        }
+        else
+            return generator->forceGenerate(RedApple, rand.first, rand.second);
 }
-void Game::generateCherry()
+Collidable* Game::generateGoldenApple(Generator* generator)
 {
+        std::pair<int, int> rand = generator->generateEmptyTile();
+        return generator->generate(GoldenApple, rand.first, rand.second);
+}
+Collidable* Game::generateCherry(Generator* generator)
+{
+    srand(time(0));
+    int rndm = rand() % 101;
+    if (rndm < 11)
+    {
+        std::pair<int, int> rand = generator->generateEmptyTile();
+        return generator->generate(Cherry, rand.first, rand.second);
 
-}
-void Game::generateRock()
-{
+    }
 
+    return NULL;
 }
-void Game::generateShuriken()
+Collidable* Game::generateRock(Generator* generator)
 {
-
+    return NULL;
 }
+Collidable* Game::generateShuriken(Generator* generator)
+{
+    return NULL;
+}
+
 void Game::openGameWin()
 {
-	sf::RenderWindow window(sf::VideoMode(GAME_W_MAX, GAME_H_MAX), "Snake Game Test");
+    window.create(sf::VideoMode(GAMEwin_W_MAX, GAMEwin_H_MAX), "Snake Game");
 	window.setFramerateLimit(GAME_SPEED);
 }
 

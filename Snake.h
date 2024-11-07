@@ -20,12 +20,12 @@ public:
 	bool collidedWithWin = false;
 	bool haseEatenApple = true;
 	int collectedApples = 0;
+	void draw(sf::RenderWindow* win);
 
 	Snake();
 
 	bool checkCollision();
 	void initSnake(int snakeLength, sf::Vector2f start, Map* map);
-	void grow();
 	void move();
 	void setStartPosition(sf::Vector2f startPosition);
 	void increaseHealth(int toIncrease);
@@ -44,6 +44,8 @@ private:
 	void handleCollisionWithStationryObstacle();
 	void handleCollisionWithWall();
 	void updateDirection();
+	void grow();
+	void shrink();
 	sf::Vector2i direction;
 	sf::Vector2f tailStartPosition;
 };

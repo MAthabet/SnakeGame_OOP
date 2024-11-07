@@ -12,32 +12,42 @@ public :
 	void run();
 
 private:
+	float const APPLE_COOLDOWN_TIME = GAME_SPEED;
+	float const GOLDEN_APPLE_TIME = GAME_SPEED;
+	float const CHERRY_COOLDOWN_TIME = GAME_SPEED/0.7;
+	float const CHERRY_TIME = GAME_SPEED/1.25;
+
+	float const ROCK_COOLDOWN_TIME = GAME_SPEED*1.5;
+	float const SHURIKEN_COOLDOWN_TIME = GAME_SPEED;
+
 	sf::RenderWindow window;
 
 	Snake player;
 	Map map;
 
-	Generator obstaclesGenerator{ sf::seconds(50 / GAME_SPEED), &map };
-	Generator collecablesGenerator{ sf::seconds(21 / GAME_SPEED), &map };
-
 	void start();
 	void loop();
 	void end();
 	void restart();
-	void generateCollictable(Generator* collectableGen);
-	void generateMovingObs();
+
 	void openGameWin();
 	int loadSpritesheet();
 	void updateAllMovingObs();
 	void updateAllCollectables();
+
 	void handleDeath();
 	void handleinput();
 	void invertInput();
-	void generateApple();
-	void generateGoldenApple();
-	void generateCherry();
-	void generateRock();
-	void generateShuriken();
+
+	Collidable* generateFood(Generator* generator);
+	Collidable* generateApple(Generator* generator);
+	Collidable* forceGenerateApple(Generator* generator);
+	Collidable* generateGoldenApple(Generator* generator);
+	Collidable* generateCherry(Generator* generator);
+
+	Collidable* generateMovingObs(Generator* generator);
+	Collidable* generateRock(Generator* generator);
+	Collidable* generateShuriken(Generator* generator);
 
 };
 

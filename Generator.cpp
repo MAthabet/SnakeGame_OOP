@@ -10,25 +10,29 @@ Collidable* Generator::generate(Assets assest,int i, int j)
 {
 	if(clock.getElapsedTime() > coolDowmInterval)
 	{
-		if (hadGenerated)
-		{
-			DeleteTile(lastGeneratedIndex.first, lastGeneratedIndex.second);
-			hadGenerated = false;
-		}
-		Collidable* guard = findAssest(assest);
-		if (guard)
-		{
-			Assest temp = guard->assest;
-			temp.sprite->setPosition(j * TILE_SIZE + TILE_SIZE / 2, i * TILE_SIZE + TILE_SIZE / 2);
-			world[i][j] = new Assest(temp.sprite, temp.type);
-			lastGeneratedIndex = { i,j };
-			clock.restart();
-			tileNotFree(i, j);
-			hadGenerated = true;
-		}
-		return guard;
+		forceGenerate(assest, i, j);
 	}
 	return NULL;
+}
+Collidable* Generator::forceGenerate(Assets assest, int i, int j)
+{
+	if (hadGenerated)
+	{
+		deleteLastGenerated();
+		hadGenerated = false;
+	}
+	Collidable* guard = findAssest(assest);
+	if (guard)
+	{
+		Assest temp = guard->assest;
+		temp.sprite->setPosition(j * TILE_SIZE + TILE_SIZE / 2, i * TILE_SIZE + TILE_SIZE / 2);
+		world[i][j] = new Assest(temp.sprite, temp.type);
+		lastGeneratedIndex = { i,j };
+		clock.restart();
+		tileNotFree(i, j);
+		hadGenerated = true;
+	}
+	return guard;
 }
 
 Collidable* Generator::findAssest(Assets assest)
@@ -53,6 +57,7 @@ std::pair<int, int> Generator::generateEmptyTile()
 	{
 		return { -1,-1 };
 	}
+	srand(time(0));
 	int indx = rand() % map->emptyTiles.size();
 
 	std::pair<int, int> genrated = map->emptyTiles[indx];
@@ -85,4 +90,12 @@ void Generator::DeleteTile(int i, int j)
 		world[i][j] = NULL;
 	}
 	map->tileIsEmpty({ i,j });
+}
+void Generator::deleteLastGenerated()
+{
+	DeleteTile(lastGeneratedIndex.first, lastGeneratedIndex.second);
+}
+bool Generator::hasGenerated()
+{
+	return hadGenerated;
 }

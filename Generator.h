@@ -1,5 +1,6 @@
 #pragma once
 #include <SFML/Graphics.hpp>
+
 #include "Collectible.h"
 #include "MovingObstacle.h"
 #include "Map.h"
@@ -12,11 +13,17 @@ class Generator
 {
 public:
 	Generator(sf::Time interv, Map* world);
+	Generator(Map* world) : map(world) {};
 	Collidable* generate(Assets assest, int i, int j);
+	Collidable* forceGenerate(Assets assest, int i, int j);
+
 	std::pair<int, int> generateEmptyTile();
-	bool hadGenerated = false;
+	void deleteLastGenerated();
+	bool hasGenerated();
+
 private:
 	std::pair<int, int> lastGeneratedIndex;
+	bool hadGenerated = false;
 	Map* map;
 	sf::Clock clock;
 	sf::Time coolDowmInterval;

@@ -10,11 +10,14 @@ enum Assets
 struct Assest
 {
 	sf::Sprite* sprite;
-	Assets type;
-	Assest() : sprite(NULL), type(None) {};
-	Assest(sf::Sprite* s, Assets t) : sprite(s), type(t){}
 	void flip(float speed = 1);
 	void rotate(float speed);
+	void move(float speed);
+	Assets type;
+
+	Assest() : sprite(NULL), type(None) {};
+	Assest(sf::Sprite* s, Assets t) : sprite(s), type(t){}
+
 private:
 	bool inv = false;
 	void flipInv(float speed);

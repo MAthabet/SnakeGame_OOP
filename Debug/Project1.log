@@ -3,5 +3,24 @@
 D:\ITI-GameDev\Project1\Project1\MovingObstacle.h(17,27): warning C4305: 'initializing': truncation from 'double' to 'const float'
   (compiling source file 'Game.cpp')
   
-D:\ITI-GameDev\Project1\Project1\Game.cpp(140): warning C4715: 'Game::loadSpritesheet': not all control paths return a value
+D:\ITI-GameDev\Project1\Project1\Game.h(18,38): warning C4305: 'initializing': truncation from 'double' to 'const float'
+  (compiling source file 'Game.cpp')
+  
+  Generator.cpp
+D:\ITI-GameDev\Project1\Project1\MovingObstacle.h(17,27): warning C4305: 'initializing': truncation from 'double' to 'const float'
+  (compiling source file 'Generator.cpp')
+  
+D:\ITI-GameDev\Project1\Project1\Generator.cpp(28,73): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\ITI-GameDev\Project1\Project1\Generator.cpp(28,42): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\ITI-GameDev\Project1\Project1\Generator.cpp(60,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  main.cpp
+D:\ITI-GameDev\Project1\Project1\MovingObstacle.h(17,27): warning C4305: 'initializing': truncation from 'double' to 'const float'
+  (compiling source file 'main.cpp')
+  
+D:\ITI-GameDev\Project1\Project1\Game.h(18,38): warning C4305: 'initializing': truncation from 'double' to 'const float'
+  (compiling source file 'main.cpp')
+  
+  Generating Code...
+D:\ITI-GameDev\Project1\Project1\Game.cpp(129): warning C4715: 'Game::generateFood': not all control paths return a value
+D:\ITI-GameDev\Project1\Project1\Game.cpp(188): warning C4715: 'Game::loadSpritesheet': not all control paths return a value
   Project1.vcxproj -> D:\ITI-GameDev\Project1\Debug\Snake Game.exe
