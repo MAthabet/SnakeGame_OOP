@@ -13,7 +13,7 @@ int const SNAKE_INIT_SIZE = 3;
 //DO NOT CHANGE IT!!
 int const PIXIL_L = 8;
 
-int const TILE_L = 3;
+int const TILE_L = 2;
 int const TILE_SIZE = PIXIL_L * TILE_L;
 
 int const GAME_W_MAX = WIDTH_TILES_MAX * TILE_SIZE;

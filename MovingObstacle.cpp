@@ -18,11 +18,15 @@ MovingObstacle::MovingObstacle(sf::Sprite* sprite, Assets type, Axis axis)
 void MovingObstacle::move(float speed)
 {
 	setSpeed(speed);
-	int Newx = assest.sprite->getPosition().x  + direction.x * TILE_SIZE * linSpeed;
-	int Newy = assest.sprite->getPosition().y + direction.y * TILE_SIZE * linSpeed;
+	int Oldx = assest.sprite->getPosition().x;
+	int Oldy = assest.sprite->getPosition().y;
+	int Newx = Oldx + direction.x * TILE_SIZE * linSpeed;
+	int Newy = Oldy + direction.y * TILE_SIZE * linSpeed;
 
 	assest.sprite->setPosition(Newx,Newy);
 	assest.rotate(rotSpeed);
+
+	DeleteTile(Oldy, Oldx);
 }
 
 

@@ -5,12 +5,13 @@
 #include "GameDefinitions.h"
 
 extern Assest* world[HEIGHT_TILES_MAX][WIDTH_TILES_MAX];
+extern std::vector<std::pair<int, int>> emptyTiles;
 
 class Map
 {
 public:
 	sf::Vector2f PlayerTailStart;
-	std::vector<std::pair<int, int>> emptyTiles;
+	
 	void draw(sf::RenderWindow* window);
 	void deleteMap();
 	void fileToArray(std::string s);

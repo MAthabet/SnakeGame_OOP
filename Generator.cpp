@@ -53,35 +53,35 @@ Collidable* Generator::findAssest(Assets assest)
 
 std::pair<int, int> Generator::generateEmptyTile()
 {
-	int x = map->emptyTiles.size();
+	int x = emptyTiles.size();
 	if (x<1) 
 	{
 		return { -1,-1 };
 	}
 	srand(time(0));
-	int indx = rand() % map->emptyTiles.size();
+	int indx = rand() % emptyTiles.size();
 
-	std::pair<int, int> genrated = map->emptyTiles[indx];
+	std::pair<int, int> genrated = emptyTiles[indx];
 
 	return genrated;
 }
 
 void Generator::tileNotFree(int indx)
 {
-	map->emptyTiles[indx] = map->emptyTiles.back();
+	emptyTiles[indx] = emptyTiles.back();
 
-	map->emptyTiles.pop_back();
+	emptyTiles.pop_back();
 }
 
 void Generator::tileNotFree(int i, int j)
 {
-	auto it = std::remove_if(map->emptyTiles.begin(), map->emptyTiles.end(),
+	auto it = std::remove_if(emptyTiles.begin(),emptyTiles.end(),
 		[i, j](const std::pair<int, int>& p) {
 			return p.first == i && p.second == j;
 		});
-	if (it != map->emptyTiles.end())
+	if (it != emptyTiles.end())
 	{
-		map->emptyTiles.erase(it, map->emptyTiles.end());
+		emptyTiles.erase(it, emptyTiles.end());
 	}
 }
 void Generator::DeleteTile(int i, int j)
@@ -96,15 +96,15 @@ void Generator::deleteLastGenerated()
 {
 	if (!hadGenerated) return;
 	if (!lastGenerated) return;
-	sf::Vector2f lastGeneratedIndex = lastGenerated->sprite->getPosition();
-	int i = lastGeneratedIndex.y / TILE_SIZE;
-	int j = lastGeneratedIndex.x / TILE_SIZE;
+	sf::Vector2f temp = lastGenerated->sprite->getPosition();
+	int i = temp.y / TILE_SIZE;
+	int j = temp.x / TILE_SIZE;
 
 	if (i < 0) i = 0;
 	else if (i >= HEIGHT_TILES_MAX) i = HEIGHT_TILES_MAX - 1;
 	if (j < 0) j = 0;
 	else if (j >= WIDTH_TILES_MAX) j = WIDTH_TILES_MAX - 1;
-
+	
 	DeleteTile(i,j);
 }
 bool Generator::hasGenerated()

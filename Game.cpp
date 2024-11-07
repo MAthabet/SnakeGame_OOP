@@ -39,11 +39,6 @@ void Game::loop()
             if (event.type == sf::Event::Closed)
                 window.close();
         }
-        if (!world[0][0])
-        {
-            printf("here");
-        }
-
         handleinput();
 
         player.move();

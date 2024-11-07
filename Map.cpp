@@ -2,6 +2,7 @@
 #include <fstream>
 
 Assest* world[HEIGHT_TILES_MAX][WIDTH_TILES_MAX];
+std::vector<std::pair<int, int>> emptyTiles;
 
 Map::Map()
 {

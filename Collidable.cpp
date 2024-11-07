@@ -94,8 +94,12 @@ void Collidable::handleCollisionWithStationryObstacle()
 
 void Collidable::DeleteTile(int j, int i)
 {
-	world[i][j] = NULL;
-	map->tileIsEmpty({i,j});
+	if(i>=0 && i < HEIGHT_TILES_MAX)
+		if (j >= 0 && j < WIDTH_TILES_MAX)
+		{
+			world[i][j] = NULL;
+			map->tileIsEmpty({i,j});
+		}
 }
 
 void Collidable::updatePosition()
