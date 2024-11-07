@@ -25,7 +25,7 @@ void MovingObstacle::move(float speed)
 
 	assest.sprite->setPosition(Newx,Newy);
 	assest.rotate(rotSpeed);
-
+	//world[Newy][Newx] = &assest;
 	DeleteTile(Oldy, Oldx);
 }
 

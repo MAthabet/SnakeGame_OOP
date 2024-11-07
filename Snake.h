@@ -14,7 +14,7 @@ public:
 	bool golden;
 	Direction lastInput = Direction::Right;
 	std::vector<sf::Sprite> snake;
-	int health = SNAKE_INIT_SIZE;
+	int health = 2;
 	bool shielded = false;
 	bool invertedInput = false;
 	bool collidedWithWin = false;

@@ -98,6 +98,7 @@ void Collidable::DeleteTile(int j, int i)
 		if (j >= 0 && j < WIDTH_TILES_MAX)
 		{
 			world[i][j] = NULL;
+			if(map)
 			map->tileIsEmpty({i,j});
 		}
 }

@@ -29,9 +29,13 @@ void Snake::grow()
 
 void Snake::shrink()
 {
-    sf::Sprite sprite = snake.back();
+    if (health < 1)
+    {
+        handleDeath();
+        return;
+    }
     health--;
-    snake.push_back(sprite);
+    snake.pop_back();
 }
 
 void Snake::move()
@@ -155,10 +159,11 @@ void Snake::handleCollisionWithMovingObstacle()
         switch (colidedWith->type)
         {
         case Rock:
-            handleDeath();
+            invertedInput = false;
             break;
         case Shuriken:
             shrink();
+            //TODO : cut();
             break;
         default:
             break;
@@ -175,16 +180,23 @@ void Snake::handleCollisionWithStationryObstacle()
         handleDeath();
         break;
     case RedObstacle:
-        invertedInput = true;
+    {
+        int temp = direction.x;
+        direction.x = direction.y;
+        direction.y = temp;
+        goto exit;
+    }
         break;
     case BlueObstacle:
         shrink();
+        goto exit;
         break;
     default:
         break;
     }
-    shielded = false;
     DeleteTile(colidedWith->sprite->getPosition().x / TILE_SIZE, colidedWith->sprite->getPosition().y / TILE_SIZE);
+exit:
+    shielded = false;
 }
 void Snake::handleCollisionWithWall()
 {

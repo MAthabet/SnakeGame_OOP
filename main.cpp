@@ -6,11 +6,12 @@
 #include "Map.h"
 #include "Generator.h"
 #include "Game.h"
+
 int main()
 {
     Game game;
     // Create the main window
-    sf::RenderWindow window(sf::VideoMode(GAMEwin_W_MAX, GAMEwin_H_MAX), "Snake Game Test");
+    sf::RenderWindow window(sf::VideoMode(GAMEwin_W_MAX, GAMEwin_H_MAX), "Snake Game Strucured");
     window.setFramerateLimit(GAME_SPEED);
     // Load the sprite sheet
     

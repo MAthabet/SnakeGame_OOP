@@ -38,7 +38,7 @@ private:
 	void handleDeath();
 	void handleinput();
 	void invertInput();
-	void moveAllObs(float speed);
+	void moveAllObs(float speed = 1);
 	void flipAllcol(float speed = 1);
 
 

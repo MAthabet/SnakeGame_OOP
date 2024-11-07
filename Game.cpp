@@ -30,7 +30,7 @@ void Game::loop()
     sf::Clock cherryClock;
     sf::Time cherryCoolDownTime = sf::seconds(CHERRY_COOLDOWN_TIME);
     sf::Time cherryTimeLife = sf::seconds(CHERRY_TIME);
-    Generator cherryGenerator{&map};    
+    Generator cherryGenerator{&map}; 
 
     while (IsRunning && window.isOpen())
     {
@@ -42,7 +42,7 @@ void Game::loop()
         handleinput();
 
         player.move();
-        moveAllObs(1);
+        moveAllObs();
         flipAllcol();
 
         generateFood(&foodGenerator);
@@ -179,8 +179,9 @@ Collidable* Game::generateRock(Generator* generator)
 }
 Collidable* Game::generateShuriken(Generator* generator)
 {
-    std::pair<int, int> rand = generator->generateEmptyTile();
-    return generator->generate(Shuriken, rand.first, rand.second);
+    srand(time(0));
+    int rndm = rand() % HEIGHT_TILES_MAX;
+    return generator->generate(Shuriken, rndm, 0);
 }
 
 void Game::openGameWin()
@@ -207,8 +208,8 @@ void Game::updateAllCollectables()
 
 void Game::updateAllMovingObs()
 {
-	AllMovingObs[0] = new MovingObstacle(&rock, Assets::Rock, Axis::Horizontal);
-	AllMovingObs[1] = new MovingObstacle(&shuriken, Assets::Shuriken, Axis::Vertical);
+	AllMovingObs[0] = new MovingObstacle(&rock, Assets::Rock, Axis::Vertical);
+	AllMovingObs[1] = new MovingObstacle(&shuriken, Assets::Shuriken, Axis::Horizontal);
 }
 void Game::handleinput()
 {
