@@ -169,7 +169,6 @@ void Snake::handleCollisionWithMovingObstacle(Assest* assest, int collidedHere)
         default:
             break;
         }
-        DeleteTile(assest->sprite->getPosition().x / TILE_SIZE, assest->sprite->getPosition().y / TILE_SIZE);
     }
 }
 void Snake::handleCollisionWithStationryObstacle()

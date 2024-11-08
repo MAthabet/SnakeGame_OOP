@@ -1,20 +1,24 @@
 d:\iti-gamedev\project1\project1\release\vc143.pdb
 d:\iti-gamedev\project1\project1\release\wall.obj
+d:\iti-gamedev\project1\project1\release\stationaryobstacle.obj
 d:\iti-gamedev\project1\project1\release\snake.obj
 d:\iti-gamedev\project1\project1\release\obstacles.obj
+d:\iti-gamedev\project1\project1\release\movingobstacle.obj
 d:\iti-gamedev\project1\project1\release\map.obj
 d:\iti-gamedev\project1\project1\release\main.obj
-d:\iti-gamedev\project1\project1\release\health.obj
 d:\iti-gamedev\project1\project1\release\game.obj
 d:\iti-gamedev\project1\project1\release\collectible.obj
 d:\iti-gamedev\project1\project1\release\assets.obj
-d:\iti-gamedev\project1\project1\release\stationaryobstacle.obj
-d:\iti-gamedev\project1\project1\release\movingobstacle.obj
-d:\iti-gamedev\project1\project1\release\collision.obj
+d:\iti-gamedev\project1\project1\release\shuriken.obj
+d:\iti-gamedev\project1\project1\release\rock.obj
+d:\iti-gamedev\project1\project1\release\generator.obj
+d:\iti-gamedev\project1\project1\release\collidable.obj
 d:\iti-gamedev\project1\release\snake game.exe
 d:\iti-gamedev\project1\release\snake game.pdb
 d:\iti-gamedev\project1\project1\release\snake game.ipdb
 d:\iti-gamedev\project1\project1\release\snake game.iobj
+d:\iti-gamedev\project1\project1\release\collision.obj
+d:\iti-gamedev\project1\project1\release\health.obj
 d:\iti-gamedev\project1\project1\release\snake game.tlog\cl.command.1.tlog
 d:\iti-gamedev\project1\project1\release\snake game.tlog\cl.items.tlog
 d:\iti-gamedev\project1\project1\release\snake game.tlog\cl.read.1.tlog
