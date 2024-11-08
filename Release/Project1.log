@@ -1,22 +1,13 @@
 ﻿C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets(531,5): warning MSB8028: The intermediate directory (Release\) contains files shared from another project (Project1.vcxproj).  This can lead to incorrect clean and rebuild behavior.
-  main.cpp
-  Snake.cpp
-D:\ITI-GameDev\Project1\Project1\Snake.cpp(7,32): warning C4244: '=': conversion from 'T' to 'T', possible loss of data
-D:\ITI-GameDev\Project1\Project1\Snake.cpp(7,32): warning C4244:         with
-D:\ITI-GameDev\Project1\Project1\Snake.cpp(7,32): warning C4244:         [
-D:\ITI-GameDev\Project1\Project1\Snake.cpp(7,32): warning C4244:             T=int
-D:\ITI-GameDev\Project1\Project1\Snake.cpp(7,32): warning C4244:         ]
-D:\ITI-GameDev\Project1\Project1\Snake.cpp(7,32): warning C4244:         and
-D:\ITI-GameDev\Project1\Project1\Snake.cpp(7,32): warning C4244:         [
-D:\ITI-GameDev\Project1\Project1\Snake.cpp(7,32): warning C4244:             T=float
-D:\ITI-GameDev\Project1\Project1\Snake.cpp(7,32): warning C4244:         ]
-D:\ITI-GameDev\Project1\Project1\Snake.cpp(8,32): warning C4244: '=': conversion from 'T' to 'T', possible loss of data
-D:\ITI-GameDev\Project1\Project1\Snake.cpp(8,32): warning C4244:         with
-D:\ITI-GameDev\Project1\Project1\Snake.cpp(8,32): warning C4244:         [
-D:\ITI-GameDev\Project1\Project1\Snake.cpp(8,32): warning C4244:             T=int
-D:\ITI-GameDev\Project1\Project1\Snake.cpp(8,32): warning C4244:         ]
-D:\ITI-GameDev\Project1\Project1\Snake.cpp(8,32): warning C4244:         and
-D:\ITI-GameDev\Project1\Project1\Snake.cpp(8,32): warning C4244:         [
-D:\ITI-GameDev\Project1\Project1\Snake.cpp(8,32): warning C4244:             T=float
-D:\ITI-GameDev\Project1\Project1\Snake.cpp(8,32): warning C4244:         ]
-LINK : fatal error LNK1104: cannot open file 'D:\ITI-GameDev\Project1\Release\Snake Game.exe'
+  Game.cpp
+D:\ITI-GameDev\Project1\Project1\Game.h(18,38): warning C4305: 'initializing': truncation from 'double' to 'const float'
+  (compiling source file 'Game.cpp')
+  
+D:\ITI-GameDev\Project1\Project1\Game.cpp(184,15): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+D:\ITI-GameDev\Project1\Project1\Game.cpp(202,15): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  Generating code
+  13 of 484 functions ( 2.7%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    9 functions had inline decision re-evaluated but remain unchanged
+  Finished generating code
+  Project1.vcxproj -> D:\ITI-GameDev\Project1\Release\Snake Game.exe

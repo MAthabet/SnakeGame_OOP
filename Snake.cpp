@@ -37,7 +37,6 @@ void Snake::shrink()
     health--;
     snake.pop_back();
 }
-
 void Snake::move()
 {
     for (int i = snake.size()-1; i > 0; i--)
@@ -135,7 +134,6 @@ void Snake::handleCollisionWithCollectable()
         Score += colidedWith->type * 10;
         collectedApples++;
         haseEatenApple = true;
-        printf("%d",collectedApples);
         grow();
         break;
     case GoldenApple:

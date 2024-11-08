@@ -91,7 +91,7 @@ void Game::loop()
         player.checkCollision();
         for (int i = 0; i < MOVING_OBSTACLES_N; i++)
         {
-            //AllMovingObs[i]->checkCollisionWithSnake(&player);
+            AllMovingObs[i]->checkCollisionWithSnake(&player);
         }
 
 
@@ -195,7 +195,8 @@ Collidable* Game::generateCherry(Generator* generator)
 Collidable* Game::generateRock(Generator* generator)
 {
     std::pair<int, int> rand = generator->generateEmptyTile();
-    return generator->generate(Rock, 0, rand.second);
+    //return generator->generate(Rock, 0, rand.second
+    return generator->generate(Rock, 0, 2);
 }
 Collidable* Game::generateShuriken(Generator* generator)
 {
