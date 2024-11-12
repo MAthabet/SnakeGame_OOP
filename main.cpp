@@ -9,7 +9,6 @@
 
 int main()
 {
-    Game game;
     // Create the main window
     sf::RenderWindow window(sf::VideoMode(GAMEwin_W_MAX, GAMEwin_H_MAX), "Snake Game Strucured");
     window.setFramerateLimit(GAME_SPEED);
@@ -18,6 +17,7 @@ int main()
     // Run the program as long as the window is open
     while (window.isOpen()) 
     {
+        Game game;
         // Check for all window events
         sf::Event event;
         while (window.pollEvent(event)) {
@@ -26,7 +26,6 @@ int main()
         }
             game.run();
             if(!game.IsRunning)
-                //TODO
                 break;
     }
 

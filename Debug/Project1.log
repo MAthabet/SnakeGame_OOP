@@ -1,2 +1,23 @@
 ﻿C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets(531,5): warning MSB8028: The intermediate directory (Debug\) contains files shared from another project (Project1.vcxproj).  This can lead to incorrect clean and rebuild behavior.
+  Game.cpp
+D:\ITI-GameDev\Project1\Project1\Game.h(18,38): warning C4305: 'initializing': truncation from 'double' to 'const float'
+  (compiling source file 'Game.cpp')
+  
+D:\ITI-GameDev\Project1\Project1\Game.cpp(49,15): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  Generator.cpp
+D:\ITI-GameDev\Project1\Project1\Generator.cpp(28,73): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\ITI-GameDev\Project1\Project1\Generator.cpp(28,42): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\ITI-GameDev\Project1\Project1\Generator.cpp(100,8): warning C4244: 'initializing': conversion from 'T' to 'int', possible loss of data
+D:\ITI-GameDev\Project1\Project1\Generator.cpp(100,8): warning C4244:         with
+D:\ITI-GameDev\Project1\Project1\Generator.cpp(100,8): warning C4244:         [
+D:\ITI-GameDev\Project1\Project1\Generator.cpp(100,8): warning C4244:             T=float
+D:\ITI-GameDev\Project1\Project1\Generator.cpp(100,8): warning C4244:         ]
+D:\ITI-GameDev\Project1\Project1\Generator.cpp(101,8): warning C4244: 'initializing': conversion from 'T' to 'int', possible loss of data
+D:\ITI-GameDev\Project1\Project1\Generator.cpp(101,8): warning C4244:         with
+D:\ITI-GameDev\Project1\Project1\Generator.cpp(101,8): warning C4244:         [
+D:\ITI-GameDev\Project1\Project1\Generator.cpp(101,8): warning C4244:             T=float
+D:\ITI-GameDev\Project1\Project1\Generator.cpp(101,8): warning C4244:         ]
+  Generating Code...
+D:\ITI-GameDev\Project1\Project1\Game.cpp(157): warning C4715: 'Game::generateFood': not all control paths return a value
+D:\ITI-GameDev\Project1\Project1\Game.cpp(219): warning C4715: 'Game::loadSpritesheet': not all control paths return a value
   Project1.vcxproj -> D:\ITI-GameDev\Project1\Debug\Snake Game.exe

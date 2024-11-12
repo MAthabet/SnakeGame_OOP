@@ -26,7 +26,7 @@ private:
 	Map map;
 
 	void displayScore();
-
+	void displayRestart();
 	void start();
 	void loop();
 	void end();

@@ -15,8 +15,20 @@ void Game::displayScore()
     scoreText.setFillColor(sf::Color::White); 
     scoreText.setPosition(0,0); 
     scoreText.setString("Score: " + std::to_string(player.Score));
-    if(!player.isAlive())
-        scoreText.setString("YOU DIED!");
+    window.draw(scoreText);
+}
+void Game::displayRestart()
+{
+    sf::Font font;
+    if (!font.loadFromFile(Font_Path)) {
+        printf("can not load font");
+    }
+    sf::Text scoreText;
+    scoreText.setFont(font);
+    scoreText.setCharacterSize(50);
+    scoreText.setFillColor(sf::Color::White);
+    scoreText.setPosition(GAME_W_MAX/2, GAME_H_MAX/2);
+    scoreText.setString("YOU DIED!\nPRESS R to restart");
     window.draw(scoreText);
 }
 Game::Game()
@@ -27,7 +39,7 @@ void Game::run()
 {
     start();
     loop();
-    IsRunning = false;
+    restart();
 }
 
 void Game::loop()
@@ -46,7 +58,8 @@ void Game::loop()
     sf::Time cherryLife = sf::seconds(CHERRY_TIME);
     Generator cherryGenerator{&map}; 
 
-    while (IsRunning && window.isOpen())
+    srand(time(0));
+    while (player.Alive && window.isOpen())
     {
         sf::Event event;
         while (window.pollEvent(event)) {
@@ -99,14 +112,15 @@ void Game::loop()
         window.clear();
 
         map.draw(&window);
-        if (player.isAlive())
+        if (player.Alive)
         {
             player.draw(&window);
         }
         displayScore();
+        
         window.display();
     }
-    end();
+   
 }
 void Game::start()
 {
@@ -128,8 +142,12 @@ void Game::end()
 }
 void Game::restart()
 {
-    IsRunning = true;
-
+    displayRestart();
+    window.display();
+    while (!player.Alive)
+    {
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::R)) player.Alive = true;
+    }
 }
 void Game::handleDeath()
 {
@@ -181,7 +199,6 @@ Collidable* Game::generateGoldenApple(Generator* generator)
 }
 Collidable* Game::generateCherry(Generator* generator)
 {
-    srand(time(0));
     int rndm = rand() % 101;
     if (rndm < 11)
     {
@@ -200,7 +217,6 @@ Collidable* Game::generateRock(Generator* generator)
 }
 Collidable* Game::generateShuriken(Generator* generator)
 {
-    srand(time(0));
     int rndm = rand() % HEIGHT_TILES_MAX;
     return generator->generate(Shuriken, rndm, 0);
 }

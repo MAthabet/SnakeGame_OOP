@@ -276,7 +276,7 @@ void Snake::draw(sf::RenderWindow* win)
 }
 void Snake::cut(int collidedHere)
 {
-    for (int i = health - collidedHere; i > 0; i++)
+    for (int i = health - collidedHere; i > 0; i--)
     {
         shrink();
     }

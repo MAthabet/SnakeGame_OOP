@@ -35,9 +35,9 @@ public:
 	void updatePosition();
 	void checkSelfCollision();
 	void handleCollisionWithMovingObstacle(Assest* assest, int collidedHere);
+	bool Alive = true;
 
 private:
-	bool Alive = true;
 	int speed;
 	void handleDeath();
 	void handleCollisionWithWindow();

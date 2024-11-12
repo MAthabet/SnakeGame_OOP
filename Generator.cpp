@@ -59,7 +59,6 @@ std::pair<int, int> Generator::generateEmptyTile()
 	{
 		return { -1,-1 };
 	}
-	srand(time(0));
 	int indx = rand() % emptyTiles.size();
 
 	std::pair<int, int> genrated = emptyTiles[indx];
